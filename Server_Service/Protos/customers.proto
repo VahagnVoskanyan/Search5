@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+option csharp_namespace = "Server_Service";
+
+service GrpcCuctomer {
+  rpc GetByName (SearchRequest) returns (SearchReply);
+}
+
+message SearchRequest {
+	string name = 1;
+}
+
+message SearchReply {
+	repeated GrpcCustomerModel cusotmer = 1;
+}
+
+message GrpcCustomerModel {
+	int32 Id = 1;
+	string name = 2;
+	string surname = 3;
+	string email = 4;  
+	string city = 5;
+	string country = 6;
+}
