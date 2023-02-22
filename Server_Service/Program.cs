@@ -6,6 +6,7 @@ using Server_Service.Data;
 using Microsoft.Extensions.Hosting.WindowsServices;
 using Server_Service.Controllers;
 using Server_Service.SyncDataServices.gRPC;
+using Search_Service.EventProcessing;
 
 namespace Server_Service
 {
@@ -26,7 +27,9 @@ namespace Server_Service
             builder.Services.AddScoped<ICustomerRepo, CustomerRepo>();
             builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies()); //For Dtos
             builder.Services.AddSingleton<IMessageBusClient, MessageBusClient>(); //Singlton?
+            builder.Services.AddSingleton<IEventProcessor, EventProcessor>(); // Singlton => for Message Bus
             builder.Services.AddHostedService<Worker>();
+            builder.Services.AddHostedService<MessageBusSubscriber>();                //Subscribe from bus
             //builder.WebHost.UseUrls("http://localhost:5055", "https://localhost:7108");
             builder.Host.UseWindowsService(); // To work as Windows service
             builder.Host.UseSerilog();

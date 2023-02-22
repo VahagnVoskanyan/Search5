@@ -22,8 +22,9 @@ namespace Search_Service
 
             builder.Services.AddHttpClient<IServerDataClient, HttpServerDataClient>();
             builder.Services.AddDbContext<AppDbContext>(opt => opt.UseInMemoryDatabase("InMemS"));
-            builder.Services.AddScoped<ICustomerRepoS,CustomerRepoS>();
+            builder.Services.AddScoped<ICustomerRepoS, CustomerRepoS>();
             builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+            builder.Services.AddSingleton<IMessageBusClient, MessageBusClient>(); //Client
             builder.Services.AddSingleton<IEventProcessor, EventProcessor>(); // Singlton => for Message Bus
             builder.Services.AddHostedService<MessageBusSubscriber>();
             builder.Services.AddScoped<IGrpcDataClient, GrpcDataClient>();

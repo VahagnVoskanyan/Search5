@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
+using Search_Service.AsyncDataServices;
 using Search_Service.Data;
 using Search_Service.Dtos;
 using Search_Service.SyncDataServices.gRPC;
@@ -13,17 +14,20 @@ namespace Search_Service.Controllers
     public class CustomersController : Controller
     {
         private readonly IServerDataClient _serverDataCilent;
+        private readonly IMessageBusClient _messageBusClient;
         private readonly IGrpcDataClient _grpcDataClient;
         private readonly ICustomerRepoS _repository;
         private readonly IMapper _mapper;
 
         public CustomersController(
             IServerDataClient serverDataCilent,
+            IMessageBusClient messageBusClient,
             IGrpcDataClient grpcDataClient,
             ICustomerRepoS repository,
             IMapper mapper)
         {
             _serverDataCilent = serverDataCilent;
+            _messageBusClient = messageBusClient;
             _grpcDataClient = grpcDataClient;
             _repository = repository;
             _mapper = mapper;
@@ -33,8 +37,18 @@ namespace Search_Service.Controllers
         [HttpGet("Name/{name}", Name = "Send Name")]
         public async Task<ActionResult> SendName(string name)
         {
-            Console.WriteLine("--> Sending Name by Http");
+            //Send Async Message
+            try
+            {
+                _messageBusClient.SendNameToBus(name);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"--> Couldn't send asynchronously: {ex.Message}");
+            }
+            return Ok();
 
+            /*Console.WriteLine("--> Sending Name by Http");
             try
             {
                 await _serverDataCilent.SendNameToServer(name);
@@ -43,7 +57,7 @@ namespace Search_Service.Controllers
             {
                 Console.WriteLine($"--> Couldn't send synchronously: {ex.Message}");
             }
-            return Ok();
+            return Ok();*/
         }
 
         [HttpGet("gRPC/{name}", Name = "Send Name by gRPC")]

@@ -59,7 +59,7 @@ namespace Server_Service.Controllers
                 //Send Async Message
                 try
                 {
-                    var customerPublishDto = _mapper.Map<IEnumerable<CustomerPublishDto>> (readDto);
+                    var customerPublishDto = _mapper.Map<IEnumerable<CustomerPublishDto>>(readDto);
                     foreach (var item in customerPublishDto)
                     {
                         item.Event = "Customer_Published";
@@ -77,7 +77,7 @@ namespace Server_Service.Controllers
             return NotFound();
         }
         [HttpPost]
-        public ActionResult<CustomerReadDto> Create(CustomerCreateDto customerCreateDto) 
+        public ActionResult<CustomerReadDto> Create(CustomerCreateDto customerCreateDto)
         {
             var customerModel = _mapper.Map<Customer>(customerCreateDto);
             _repository.CreateCustomer(customerModel);

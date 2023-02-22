@@ -13,7 +13,9 @@ namespace Server_Service.Profiles
             //Source(dto) -> target(model).  
             CreateMap<CustomerCreateDto, Customer>();
 
-            CreateMap<CustomerReadDto,CustomerPublishDto>();
+            CreateMap<Customer, CustomerPublishDto>();   //
+
+            CreateMap<CustomerReadDto,CustomerPublishDto>(); //Need?
 
             CreateMap<Customer, GrpcCustomerModel>();
         }
