@@ -27,26 +27,20 @@ namespace Search_Service.EventProcessing
         public void ProcessEvent(string message)
         {
             var custs = FindCustomers(message);
-            if (custs != null)          //Need ?
+
+            //Send Async Message
+            try
             {
-                //Send Async Message
-                try
+                var customerPublishDto = _mapper.Map<IEnumerable<CustomerPublishDto>>(custs);
+                foreach (var item in customerPublishDto)
                 {
-                    var customerPublishDto = _mapper.Map<IEnumerable<CustomerPublishDto>>(custs);
-                    foreach (var item in customerPublishDto)
-                    {
-                        item.Event = "Customer_Published";
-                    }
-                    _messageBusClient.PublishCustomerByName(customerPublishDto);      //Sending to Message Bus
+                    item.Event = "Customer_Published";
                 }
-                catch (Exception ex)
-                {
-                    Console.WriteLine($"--> Couldn't send asynchronously: {ex.Message}");
-                }
+                _messageBusClient.PublishCustomerByName(customerPublishDto);      //Sending to Message Bus
             }
-            else
+            catch (Exception ex)
             {
-                Console.WriteLine($"--> No customer with name: {message}");
+                Console.WriteLine($"--> Couldn't send asynchronously: {ex.Message}");
             }
         }
 

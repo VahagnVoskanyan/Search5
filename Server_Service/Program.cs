@@ -45,7 +45,7 @@ namespace Server_Service
                 .MinimumLevel.Override("Microsost", LogEventLevel.Warning)
                 .Enrich.FromLogContext()
                 .WriteTo.Console()
-                .WriteTo.File(@"C:\Users\vahag\Desktop\Vahagn\Practise\Search4\LogFile.txt")
+                .WriteTo.File(@"C:\Users\vahag\Desktop\Vahagn\Practise\Search5\LogFile.txt")
                 .CreateLogger();
 
 

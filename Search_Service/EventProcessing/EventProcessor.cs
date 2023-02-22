@@ -36,15 +36,22 @@ namespace Search_Service.EventProcessing
             Console.WriteLine("--> Determining Event");
 
             var eventType = JsonSerializer.Deserialize<IEnumerable<GenericEventDto>>(notificationMessage); //list
-
-            switch (eventType.First().Event)  //First member
+            if (eventType == null)
             {
-                case "Customer_Published":
-                    Console.WriteLine("--> Customer found 'by name' Event Detected");
-                    return EventType.CustomerPublished;
-                default:
-                    Console.WriteLine("--> Couldn't determine the event type");
-                    return EventType.Undetermined;
+                switch (eventType.First().Event)  //First member
+                {
+                    case "Customer_Published":
+                        Console.WriteLine("--> Customer found 'by name' Event Detected");
+                        return EventType.CustomerPublished;
+                    default:
+                        Console.WriteLine("--> Couldn't determine the event type");
+                        return EventType.Undetermined;
+                }
+            }
+            else
+            {
+                Console.WriteLine("--> NO customer found");
+                return EventType.Undetermined;
             }
         }
 
