@@ -38,7 +38,7 @@ namespace Server_Service.AsyncDataServices
                      arguments: null);
 
             //'prefetchCount'-queue won't send next message before the first one isn't 'acked' 
-            _channel.BasicQos(prefetchSize: 0, prefetchCount: 1, global: false);
+            _channel.BasicQos(prefetchSize: 0, prefetchCount: 2, global: false);
             Console.WriteLine("--> Listening on the Message Bus...");
 
             _connection.ConnectionShutdown += RabbitMQ_ConnnectionShutdown;

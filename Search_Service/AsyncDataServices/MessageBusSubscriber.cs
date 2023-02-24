@@ -50,15 +50,6 @@ namespace Search_Service.AsyncDataServices
                 var body = ea.Body;
                 var notificationMessage = Encoding.UTF8.GetString(body.ToArray());
                 _eventProcessor.ProcessEvent(notificationMessage);
-                /*if (!body.IsEmpty)
-                {
-                    var notificationMessage = Encoding.UTF8.GetString(body.ToArray());
-                    _eventProcessor.ProcessEvent(notificationMessage);
-                }
-                else
-                {
-                    Console.WriteLine("--> NO customer found");
-                }*/
             };
 
             _channel.BasicConsume(queue: _queueName, autoAck: true, consumer: consumer);
