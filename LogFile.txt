@@ -1,0 +1,252 @@
+2023-02-24 20:48:43.032 +04:00 [DBG] Registered model binder providers, in the following order: ["Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BinderTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ServicesModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BodyModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.HeaderModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FloatingPointTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.EnumTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.DateTimeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.SimpleTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.CancellationTokenModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ByteArrayModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FormFileModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FormCollectionModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.KeyValuePairModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.DictionaryModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ArrayModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.CollectionModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ComplexObjectModelBinderProvider"]
+2023-02-24 20:48:43.075 +04:00 [INF] Starting up the service
+2023-02-24 20:48:44.582 +04:00 [INF] Worker running at: "2023-02-24T20:48:44.5797780+04:00"
+2023-02-24 20:48:44.723 +04:00 [INF] Now listening on: https://localhost:7108
+2023-02-24 20:48:44.724 +04:00 [INF] Now listening on: http://localhost:5055
+2023-02-24 20:48:44.725 +04:00 [DBG] Loaded hosting startup assembly Server_Service
+2023-02-24 20:48:54.582 +04:00 [INF] Worker running at: "2023-02-24T20:48:54.5828422+04:00"
+2023-02-24 20:49:04.591 +04:00 [INF] Worker running at: "2023-02-24T20:49:04.5913402+04:00"
+2023-02-24 20:49:14.595 +04:00 [INF] Worker running at: "2023-02-24T20:49:14.5949648+04:00"
+2023-02-24 20:49:21.136 +04:00 [DBG] Entity Framework Core 7.0.2 initialized 'AppDbContext' using provider 'Microsoft.EntityFrameworkCore.InMemory:7.0.2' with options: StoreName=InMem 
+2023-02-24 20:49:21.142 +04:00 [DBG] Compiling query expression: 
+'DbSet<Customer>()'
+2023-02-24 20:49:21.170 +04:00 [DBG] Generated query execution expression: 
+'queryContext => new QueryingEnumerable<Customer>(
+    queryContext, 
+    InMemoryShapedQueryCompilingExpressionVisitor.Table(
+        queryContext: queryContext, 
+        entityType: EntityType: Customer)
+        .Select(valueBuffer => new ValueBuffer(new object[]
+        { 
+            (object)ExpressionExtensions.ValueBufferTryReadValue<int>(
+                valueBuffer: valueBuffer, 
+                index: 0, 
+                property: Property: Customer.Id (int) Required PK AfterSave:Throw ValueGenerated.OnAdd), 
+            ExpressionExtensions.ValueBufferTryReadValue<string>(
+                valueBuffer: valueBuffer, 
+                index: 1, 
+                property: Property: Customer.Address (string) Required), 
+            ExpressionExtensions.ValueBufferTryReadValue<string>(
+                valueBuffer: valueBuffer, 
+                index: 2, 
+                property: Property: Customer.City (string) Required), 
+            ExpressionExtensions.ValueBufferTryReadValue<string>(
+                valueBuffer: valueBuffer, 
+                index: 3, 
+                property: Property: Customer.Country (string) Required), 
+            ExpressionExtensions.ValueBufferTryReadValue<string>(
+                valueBuffer: valueBuffer, 
+                index: 4, 
+                property: Property: Customer.Email (string) Required), 
+            ExpressionExtensions.ValueBufferTryReadValue<string>(
+                valueBuffer: valueBuffer, 
+                index: 5, 
+                property: Property: Customer.Name (string) Required), 
+            ExpressionExtensions.ValueBufferTryReadValue<string>(
+                valueBuffer: valueBuffer, 
+                index: 6, 
+                property: Property: Customer.Phone (string) Required), 
+            ExpressionExtensions.ValueBufferTryReadValue<string>(
+                valueBuffer: valueBuffer, 
+                index: 7, 
+                property: Property: Customer.PostalCode (string) Required), 
+            ExpressionExtensions.ValueBufferTryReadValue<string>(
+                valueBuffer: valueBuffer, 
+                index: 8, 
+                property: Property: Customer.Region (string) Required), 
+            ExpressionExtensions.ValueBufferTryReadValue<string>(
+                valueBuffer: valueBuffer, 
+                index: 9, 
+                property: Property: Customer.Surname (string) Required) 
+        })), 
+    Func<QueryContext, ValueBuffer, Customer>, 
+    Server_Service.Data.AppDbContext, 
+    False, 
+    True
+)'
+2023-02-24 20:49:21.208 +04:00 [DBG] Context 'AppDbContext' started tracking 'Customer' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2023-02-24 20:49:21.215 +04:00 [DBG] Context 'AppDbContext' started tracking 'Customer' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2023-02-24 20:49:21.223 +04:00 [DBG] Context 'AppDbContext' started tracking 'Customer' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2023-02-24 20:49:21.224 +04:00 [DBG] Context 'AppDbContext' started tracking 'Customer' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2023-02-24 20:49:21.226 +04:00 [DBG] 'AppDbContext' disposed.
+2023-02-24 20:49:24.597 +04:00 [INF] Worker running at: "2023-02-24T20:49:24.5971240+04:00"
+2023-02-24 20:49:28.196 +04:00 [DBG] Entity Framework Core 7.0.2 initialized 'AppDbContext' using provider 'Microsoft.EntityFrameworkCore.InMemory:7.0.2' with options: StoreName=InMem 
+2023-02-24 20:49:28.200 +04:00 [DBG] Context 'AppDbContext' started tracking 'Customer' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2023-02-24 20:49:28.203 +04:00 [DBG] Context 'AppDbContext' started tracking 'Customer' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2023-02-24 20:49:28.206 +04:00 [DBG] Context 'AppDbContext' started tracking 'Customer' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2023-02-24 20:49:28.210 +04:00 [DBG] Context 'AppDbContext' started tracking 'Customer' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2023-02-24 20:49:28.210 +04:00 [DBG] 'AppDbContext' disposed.
+2023-02-24 20:49:34.606 +04:00 [INF] Worker running at: "2023-02-24T20:49:34.6059735+04:00"
+2023-02-24 20:49:44.618 +04:00 [INF] Worker running at: "2023-02-24T20:49:44.6187126+04:00"
+2023-02-24 20:49:46.713 +04:00 [DBG] Entity Framework Core 7.0.2 initialized 'AppDbContext' using provider 'Microsoft.EntityFrameworkCore.InMemory:7.0.2' with options: StoreName=InMem 
+2023-02-24 20:49:46.717 +04:00 [DBG] Context 'AppDbContext' started tracking 'Customer' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2023-02-24 20:49:46.719 +04:00 [DBG] Context 'AppDbContext' started tracking 'Customer' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2023-02-24 20:49:46.721 +04:00 [DBG] Context 'AppDbContext' started tracking 'Customer' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2023-02-24 20:49:46.722 +04:00 [DBG] Context 'AppDbContext' started tracking 'Customer' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2023-02-24 20:49:46.723 +04:00 [DBG] 'AppDbContext' disposed.
+2023-02-24 20:49:54.621 +04:00 [INF] Worker running at: "2023-02-24T20:49:54.6214624+04:00"
+2023-02-24 20:50:04.624 +04:00 [INF] Worker running at: "2023-02-24T20:50:04.6243748+04:00"
+2023-02-24 20:50:14.633 +04:00 [INF] Worker running at: "2023-02-24T20:50:14.6337785+04:00"
+2023-02-24 20:50:24.649 +04:00 [INF] Worker running at: "2023-02-24T20:50:24.6493105+04:00"
+2023-02-24 20:57:05.618 +04:00 [DBG] Registered model binder providers, in the following order: ["Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BinderTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ServicesModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BodyModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.HeaderModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FloatingPointTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.EnumTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.DateTimeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.SimpleTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.CancellationTokenModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ByteArrayModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FormFileModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FormCollectionModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.KeyValuePairModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.DictionaryModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ArrayModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.CollectionModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ComplexObjectModelBinderProvider"]
+2023-02-24 20:57:05.654 +04:00 [INF] Starting up the service
+2023-02-24 20:57:07.007 +04:00 [INF] Worker running at: "2023-02-24T20:57:07.0048870+04:00"
+2023-02-24 20:57:07.131 +04:00 [INF] Now listening on: https://localhost:7108
+2023-02-24 20:57:07.138 +04:00 [INF] Now listening on: http://localhost:5055
+2023-02-24 20:57:07.139 +04:00 [DBG] Loaded hosting startup assembly Server_Service
+2023-02-24 20:57:17.026 +04:00 [INF] Worker running at: "2023-02-24T20:57:17.0264246+04:00"
+2023-02-24 20:57:24.512 +04:00 [DBG] Entity Framework Core 7.0.2 initialized 'AppDbContext' using provider 'Microsoft.EntityFrameworkCore.InMemory:7.0.2' with options: StoreName=InMem 
+2023-02-24 20:57:24.527 +04:00 [DBG] Compiling query expression: 
+'DbSet<Customer>()'
+2023-02-24 20:57:24.571 +04:00 [DBG] Generated query execution expression: 
+'queryContext => new QueryingEnumerable<Customer>(
+    queryContext, 
+    InMemoryShapedQueryCompilingExpressionVisitor.Table(
+        queryContext: queryContext, 
+        entityType: EntityType: Customer)
+        .Select(valueBuffer => new ValueBuffer(new object[]
+        { 
+            (object)ExpressionExtensions.ValueBufferTryReadValue<int>(
+                valueBuffer: valueBuffer, 
+                index: 0, 
+                property: Property: Customer.Id (int) Required PK AfterSave:Throw ValueGenerated.OnAdd), 
+            ExpressionExtensions.ValueBufferTryReadValue<string>(
+                valueBuffer: valueBuffer, 
+                index: 1, 
+                property: Property: Customer.Address (string) Required), 
+            ExpressionExtensions.ValueBufferTryReadValue<string>(
+                valueBuffer: valueBuffer, 
+                index: 2, 
+                property: Property: Customer.City (string) Required), 
+            ExpressionExtensions.ValueBufferTryReadValue<string>(
+                valueBuffer: valueBuffer, 
+                index: 3, 
+                property: Property: Customer.Country (string) Required), 
+            ExpressionExtensions.ValueBufferTryReadValue<string>(
+                valueBuffer: valueBuffer, 
+                index: 4, 
+                property: Property: Customer.Email (string) Required), 
+            ExpressionExtensions.ValueBufferTryReadValue<string>(
+                valueBuffer: valueBuffer, 
+                index: 5, 
+                property: Property: Customer.Name (string) Required), 
+            ExpressionExtensions.ValueBufferTryReadValue<string>(
+                valueBuffer: valueBuffer, 
+                index: 6, 
+                property: Property: Customer.Phone (string) Required), 
+            ExpressionExtensions.ValueBufferTryReadValue<string>(
+                valueBuffer: valueBuffer, 
+                index: 7, 
+                property: Property: Customer.PostalCode (string) Required), 
+            ExpressionExtensions.ValueBufferTryReadValue<string>(
+                valueBuffer: valueBuffer, 
+                index: 8, 
+                property: Property: Customer.Region (string) Required), 
+            ExpressionExtensions.ValueBufferTryReadValue<string>(
+                valueBuffer: valueBuffer, 
+                index: 9, 
+                property: Property: Customer.Surname (string) Required) 
+        })), 
+    Func<QueryContext, ValueBuffer, Customer>, 
+    Server_Service.Data.AppDbContext, 
+    False, 
+    True
+)'
+2023-02-24 20:57:24.584 +04:00 [DBG] Context 'AppDbContext' started tracking 'Customer' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2023-02-24 20:57:24.585 +04:00 [DBG] Context 'AppDbContext' started tracking 'Customer' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2023-02-24 20:57:24.588 +04:00 [DBG] Context 'AppDbContext' started tracking 'Customer' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2023-02-24 20:57:24.589 +04:00 [DBG] Context 'AppDbContext' started tracking 'Customer' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2023-02-24 20:57:24.591 +04:00 [DBG] 'AppDbContext' disposed.
+2023-02-24 20:57:27.054 +04:00 [INF] Worker running at: "2023-02-24T20:57:27.0540967+04:00"
+2023-02-24 20:57:37.061 +04:00 [INF] Worker running at: "2023-02-24T20:57:37.0610403+04:00"
+2023-02-24 20:57:47.070 +04:00 [INF] Worker running at: "2023-02-24T20:57:47.0704066+04:00"
+2023-02-24 20:57:57.089 +04:00 [INF] Worker running at: "2023-02-24T20:57:57.0892331+04:00"
+2023-02-24 20:58:07.104 +04:00 [INF] Worker running at: "2023-02-24T20:58:07.1048472+04:00"
+2023-02-24 20:58:17.120 +04:00 [INF] Worker running at: "2023-02-24T20:58:17.1202231+04:00"
+2023-02-24 20:58:27.143 +04:00 [INF] Worker running at: "2023-02-24T20:58:27.1427849+04:00"
+2023-02-24 20:58:37.164 +04:00 [INF] Worker running at: "2023-02-24T20:58:37.1648413+04:00"
+2023-02-24 20:58:47.181 +04:00 [INF] Worker running at: "2023-02-24T20:58:47.1818529+04:00"
+2023-02-24 20:58:57.193 +04:00 [INF] Worker running at: "2023-02-24T20:58:57.1935347+04:00"
+2023-02-24 20:59:02.165 +04:00 [DBG] Entity Framework Core 7.0.2 initialized 'AppDbContext' using provider 'Microsoft.EntityFrameworkCore.InMemory:7.0.2' with options: StoreName=InMem 
+2023-02-24 20:59:02.170 +04:00 [DBG] Context 'AppDbContext' started tracking 'Customer' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2023-02-24 20:59:02.171 +04:00 [DBG] Context 'AppDbContext' started tracking 'Customer' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2023-02-24 20:59:02.173 +04:00 [DBG] Context 'AppDbContext' started tracking 'Customer' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2023-02-24 20:59:02.175 +04:00 [DBG] Context 'AppDbContext' started tracking 'Customer' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2023-02-24 20:59:02.177 +04:00 [DBG] 'AppDbContext' disposed.
+2023-02-24 20:59:07.215 +04:00 [INF] Worker running at: "2023-02-24T20:59:07.2149812+04:00"
+2023-02-24 20:59:17.229 +04:00 [INF] Worker running at: "2023-02-24T20:59:17.2266170+04:00"
+2023-02-24 20:59:27.236 +04:00 [INF] Worker running at: "2023-02-24T20:59:27.2365697+04:00"
+2023-02-24 20:59:37.258 +04:00 [INF] Worker running at: "2023-02-24T20:59:37.2582311+04:00"
+2023-02-24 20:59:47.273 +04:00 [INF] Worker running at: "2023-02-24T20:59:47.2732622+04:00"
+2023-02-24 20:59:57.293 +04:00 [INF] Worker running at: "2023-02-24T20:59:57.2932629+04:00"
+2023-02-24 21:00:07.304 +04:00 [INF] Worker running at: "2023-02-24T21:00:07.3046459+04:00"
+2023-02-24 21:00:17.319 +04:00 [INF] Worker running at: "2023-02-24T21:00:17.3190911+04:00"
+2023-02-24 21:00:27.339 +04:00 [INF] Worker running at: "2023-02-24T21:00:27.3399193+04:00"
+2023-02-24 21:00:37.355 +04:00 [INF] Worker running at: "2023-02-24T21:00:37.3551553+04:00"
+2023-02-24 21:00:47.364 +04:00 [INF] Worker running at: "2023-02-24T21:00:47.3641031+04:00"
+2023-02-24 21:00:57.382 +04:00 [INF] Worker running at: "2023-02-24T21:00:57.3827276+04:00"
+2023-02-24 21:01:07.388 +04:00 [INF] Worker running at: "2023-02-24T21:01:07.3882479+04:00"
+2023-02-24 21:01:12.048 +04:00 [DBG] Entity Framework Core 7.0.2 initialized 'AppDbContext' using provider 'Microsoft.EntityFrameworkCore.InMemory:7.0.2' with options: StoreName=InMem 
+2023-02-24 21:01:12.056 +04:00 [DBG] Context 'AppDbContext' started tracking 'Customer' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2023-02-24 21:01:12.058 +04:00 [DBG] Context 'AppDbContext' started tracking 'Customer' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2023-02-24 21:01:12.060 +04:00 [DBG] Context 'AppDbContext' started tracking 'Customer' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2023-02-24 21:01:12.061 +04:00 [DBG] Context 'AppDbContext' started tracking 'Customer' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2023-02-24 21:01:12.062 +04:00 [DBG] 'AppDbContext' disposed.
+2023-02-24 21:01:17.391 +04:00 [INF] Worker running at: "2023-02-24T21:01:17.3911618+04:00"
+2023-02-24 21:01:27.403 +04:00 [INF] Worker running at: "2023-02-24T21:01:27.4038763+04:00"
+2023-02-24 21:01:37.420 +04:00 [INF] Worker running at: "2023-02-24T21:01:37.4200498+04:00"
+2023-02-24 21:01:47.430 +04:00 [INF] Worker running at: "2023-02-24T21:01:47.4302173+04:00"
+2023-02-24 21:01:48.797 +04:00 [DBG] Entity Framework Core 7.0.2 initialized 'AppDbContext' using provider 'Microsoft.EntityFrameworkCore.InMemory:7.0.2' with options: StoreName=InMem 
+2023-02-24 21:01:48.800 +04:00 [DBG] Context 'AppDbContext' started tracking 'Customer' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2023-02-24 21:01:48.801 +04:00 [DBG] Context 'AppDbContext' started tracking 'Customer' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2023-02-24 21:01:48.802 +04:00 [DBG] Context 'AppDbContext' started tracking 'Customer' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2023-02-24 21:01:48.803 +04:00 [DBG] Context 'AppDbContext' started tracking 'Customer' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2023-02-24 21:01:48.805 +04:00 [DBG] 'AppDbContext' disposed.
+2023-02-24 21:01:57.439 +04:00 [INF] Worker running at: "2023-02-24T21:01:57.4393555+04:00"
+2023-02-24 21:02:07.450 +04:00 [INF] Worker running at: "2023-02-24T21:02:07.4509294+04:00"
+2023-02-24 21:02:17.460 +04:00 [INF] Worker running at: "2023-02-24T21:02:17.4607186+04:00"
+2023-02-24 21:02:23.229 +04:00 [DBG] Entity Framework Core 7.0.2 initialized 'AppDbContext' using provider 'Microsoft.EntityFrameworkCore.InMemory:7.0.2' with options: StoreName=InMem 
+2023-02-24 21:02:23.232 +04:00 [DBG] Context 'AppDbContext' started tracking 'Customer' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2023-02-24 21:02:23.233 +04:00 [DBG] Context 'AppDbContext' started tracking 'Customer' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2023-02-24 21:02:23.235 +04:00 [DBG] Context 'AppDbContext' started tracking 'Customer' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2023-02-24 21:02:23.236 +04:00 [DBG] Context 'AppDbContext' started tracking 'Customer' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2023-02-24 21:02:23.236 +04:00 [DBG] 'AppDbContext' disposed.
+2023-02-24 21:02:27.471 +04:00 [INF] Worker running at: "2023-02-24T21:02:27.4715841+04:00"
+2023-02-24 21:02:37.486 +04:00 [INF] Worker running at: "2023-02-24T21:02:37.4866550+04:00"
+2023-02-24 21:02:47.494 +04:00 [INF] Worker running at: "2023-02-24T21:02:47.4942259+04:00"
+2023-02-24 21:02:57.506 +04:00 [INF] Worker running at: "2023-02-24T21:02:57.5063383+04:00"
+2023-02-24 21:03:07.517 +04:00 [INF] Worker running at: "2023-02-24T21:03:07.5179191+04:00"
+2023-02-24 21:03:17.533 +04:00 [INF] Worker running at: "2023-02-24T21:03:17.5337276+04:00"
+2023-02-24 21:03:27.556 +04:00 [INF] Worker running at: "2023-02-24T21:03:27.5568326+04:00"
+2023-02-24 21:03:31.055 +04:00 [DBG] Entity Framework Core 7.0.2 initialized 'AppDbContext' using provider 'Microsoft.EntityFrameworkCore.InMemory:7.0.2' with options: StoreName=InMem 
+2023-02-24 21:03:31.061 +04:00 [DBG] Context 'AppDbContext' started tracking 'Customer' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2023-02-24 21:03:31.065 +04:00 [DBG] Context 'AppDbContext' started tracking 'Customer' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2023-02-24 21:03:31.066 +04:00 [DBG] Context 'AppDbContext' started tracking 'Customer' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2023-02-24 21:03:31.071 +04:00 [DBG] Context 'AppDbContext' started tracking 'Customer' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2023-02-24 21:03:31.074 +04:00 [DBG] 'AppDbContext' disposed.
+2023-02-24 21:03:37.572 +04:00 [INF] Worker running at: "2023-02-24T21:03:37.5728695+04:00"
+2023-02-24 21:03:47.582 +04:00 [INF] Worker running at: "2023-02-24T21:03:47.5823061+04:00"
+2023-02-24 21:03:57.608 +04:00 [INF] Worker running at: "2023-02-24T21:03:57.6080224+04:00"
+2023-02-24 21:04:00.951 +04:00 [DBG] Entity Framework Core 7.0.2 initialized 'AppDbContext' using provider 'Microsoft.EntityFrameworkCore.InMemory:7.0.2' with options: StoreName=InMem 
+2023-02-24 21:04:00.955 +04:00 [DBG] Context 'AppDbContext' started tracking 'Customer' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2023-02-24 21:04:00.957 +04:00 [DBG] Context 'AppDbContext' started tracking 'Customer' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2023-02-24 21:04:00.958 +04:00 [DBG] Context 'AppDbContext' started tracking 'Customer' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2023-02-24 21:04:00.959 +04:00 [DBG] Context 'AppDbContext' started tracking 'Customer' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2023-02-24 21:04:00.961 +04:00 [DBG] 'AppDbContext' disposed.
+2023-02-24 21:04:07.642 +04:00 [INF] Worker running at: "2023-02-24T21:04:07.6423144+04:00"
+2023-02-24 21:04:15.048 +04:00 [DBG] Entity Framework Core 7.0.2 initialized 'AppDbContext' using provider 'Microsoft.EntityFrameworkCore.InMemory:7.0.2' with options: StoreName=InMem 
+2023-02-24 21:04:15.059 +04:00 [DBG] Context 'AppDbContext' started tracking 'Customer' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2023-02-24 21:04:15.064 +04:00 [DBG] Context 'AppDbContext' started tracking 'Customer' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2023-02-24 21:04:15.069 +04:00 [DBG] Context 'AppDbContext' started tracking 'Customer' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2023-02-24 21:04:15.072 +04:00 [DBG] Context 'AppDbContext' started tracking 'Customer' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2023-02-24 21:04:15.074 +04:00 [DBG] 'AppDbContext' disposed.
+2023-02-24 21:04:17.656 +04:00 [INF] Worker running at: "2023-02-24T21:04:17.6564415+04:00"
+2023-02-24 21:04:27.671 +04:00 [INF] Worker running at: "2023-02-24T21:04:27.6716261+04:00"
+2023-02-24 21:04:37.699 +04:00 [INF] Worker running at: "2023-02-24T21:04:37.6990630+04:00"
+2023-02-24 21:04:38.844 +04:00 [DBG] Entity Framework Core 7.0.2 initialized 'AppDbContext' using provider 'Microsoft.EntityFrameworkCore.InMemory:7.0.2' with options: StoreName=InMem 
+2023-02-24 21:04:38.847 +04:00 [DBG] Context 'AppDbContext' started tracking 'Customer' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2023-02-24 21:04:38.850 +04:00 [DBG] Context 'AppDbContext' started tracking 'Customer' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2023-02-24 21:04:38.852 +04:00 [DBG] Context 'AppDbContext' started tracking 'Customer' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2023-02-24 21:04:38.853 +04:00 [DBG] Context 'AppDbContext' started tracking 'Customer' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2023-02-24 21:04:38.855 +04:00 [DBG] 'AppDbContext' disposed.
+2023-02-24 21:04:47.720 +04:00 [INF] Worker running at: "2023-02-24T21:04:47.7202106+04:00"

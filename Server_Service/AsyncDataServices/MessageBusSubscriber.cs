@@ -37,6 +37,8 @@ namespace Server_Service.AsyncDataServices
                      autoDelete: false,
                      arguments: null);
 
+            //'prefetchCount'-queue won't send next message before the first one isn't 'acked' 
+            _channel.BasicQos(prefetchSize: 0, prefetchCount: 1, global: false);
             Console.WriteLine("--> Listening on the Message Bus...");
 
             _connection.ConnectionShutdown += RabbitMQ_ConnnectionShutdown;
@@ -54,10 +56,13 @@ namespace Server_Service.AsyncDataServices
                 Console.WriteLine($"--> Received Name: {message}");
 
                 _eventProcessor.ProcessEvent(message);      //Finding customers and sending
+
+                //After processing the event and sending message to Bus, we 'ack' the received message 
+                _channel.BasicAck(deliveryTag: ea.DeliveryTag, multiple: false);
             };
 
             _channel.BasicConsume(queue: "searchqueue",
-                                 autoAck: true,
+                                 autoAck: false,     //'false' for waiting
                                  consumer: consumer);
 
             return Task.CompletedTask;
