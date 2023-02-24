@@ -36,6 +36,7 @@ namespace Search_Service.EventProcessing
             Console.WriteLine("--> Determining Event");
 
             var eventType = JsonSerializer.Deserialize<IEnumerable<GenericEventDto>>(notificationMessage); //list
+            //If there is no one with that name
             if (eventType.Count() != 0)
             {
                 switch (eventType.First().Event)  //First member
