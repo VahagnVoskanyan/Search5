@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Diagnostics;
+using System.Threading.Tasks;
 
 namespace Clients
 {
@@ -8,48 +9,44 @@ namespace Clients
         {
             //1 method grem vochte esqan shat??????
 
-            /*Task task1 = AsyncMethod1();
-            Task task2 = AsyncMethod2();
-            Task task3 = AsyncMethod3();
-            Task task4 = AsyncMethod4();
-            task1.Wait();
-            task2.Wait();
-            task3.Wait();
-            task4.Wait();*/
+            Task[] tasks = new Task[5];
+            Stopwatch stopwatch = new Stopwatch();
 
-            Task task1 = AsyncMethod0();
-            Console.WriteLine("--> task1 end");
-            Task task2 = AsyncMethod();
-            Console.WriteLine("--> task2 end");
-            Task task3 = AsyncMethod();
-            Console.WriteLine("--> task3 end");
-            Task task4 = AsyncMethod();
-            Console.WriteLine("--> task4 end");
+            /*for (int i = 0; i < tasks.Length; i++)
+            {
+                Console.WriteLine($"--> Task {i} starts");
+                tasks[i] = AsyncMethod();
+            }*/
+            stopwatch.Start();
 
-            task1.Wait();
-            task2.Wait();
-            task3.Wait();
-            task4.Wait();
+            Console.WriteLine($"--> Task 0 starts");
+            tasks[0] = AsyncMethod();
+            Console.WriteLine($"--> Task 1 starts");
+            tasks[1] = AsyncMethod1();
+            Console.WriteLine($"--> Task 2 starts");
+            tasks[2] = AsyncMethod2();
+            Console.WriteLine($"--> Task 3 starts");
+            tasks[3] = AsyncMethod3();
+            Console.WriteLine($"--> Task 4 starts");
+            tasks[4] = AsyncMethod4();
+
+            Task.WaitAll(tasks);
+
+            stopwatch.Stop();
+
+            Console.WriteLine("\nElapsed Time is {0} ms", stopwatch.ElapsedMilliseconds);
+
         }
         async static Task AsyncMethod()
         {
             await Task.Run(async () =>
             {
+                HttpClient client = new HttpClient();
                 for (int i = 0; i < 100; i++)
                 {
+                    var result = await client.GetAsync("http://localhost:5128/api/s/customers/Name/sdfgs");
                 }
-                Console.WriteLine("AsyncMethooooood----1 end.");
-            });
-        }
-        async static Task AsyncMethod0()
-        {
-            await Task.Run(async () =>
-            {
-                for (int i = 0; i < 100; i++)
-                {
-                    Thread.Sleep(100);
-                }
-                Console.WriteLine("AsyncMethooooood----000000000 end.");
+                Console.WriteLine("AsyncMethooooood-------- end.");
             });
         }
 

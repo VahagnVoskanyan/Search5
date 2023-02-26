@@ -35,7 +35,7 @@ namespace Search_Service.Controllers
 
         // Server Service
         [HttpGet("Name/{name}", Name = "Send Name")]
-        public async Task<ActionResult> SendName(string name)
+        public ActionResult SendName(string name)
         {
             //Send Async Message
             try
