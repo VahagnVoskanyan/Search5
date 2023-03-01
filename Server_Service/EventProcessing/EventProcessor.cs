@@ -11,37 +11,50 @@ namespace Search_Service.EventProcessing
     public class EventProcessor : IEventProcessor
     {
         private readonly IServiceScopeFactory _scopeFactory;
-        private readonly IMessageBusClient _messageBusClient;
+        //private readonly IMessageBusClient _messageBusClient;
         private readonly IMapper _mapper;
 
         //Can't call repo in MessageBusSubscriber because the lifetime is shorter then in this singleton class
         public EventProcessor(
             IServiceScopeFactory scopeFactory,
-            IMessageBusClient messageBusClient,
+            //IMessageBusClient messageBusClient,
             IMapper mapper)
         {
             _scopeFactory = scopeFactory;
-            _messageBusClient = messageBusClient;
+            //_messageBusClient = messageBusClient;
             _mapper = mapper;
         }
-        public void ProcessEvent(string message)
+        public IEnumerable<CustomerPublishDto> ProcessEvent(string message)
         {
             var custs = FindCustomers(message);
 
             //Send Async Message
-            try
+
+            var customerPublishDto = _mapper.Map<IEnumerable<CustomerPublishDto>>(custs);
+            foreach (var item in customerPublishDto)
+            {
+                item.Event = "Customer_Published";
+            }
+
+            return customerPublishDto;
+
+            //Without RPC
+            /*try
             {
                 var customerPublishDto = _mapper.Map<IEnumerable<CustomerPublishDto>>(custs);
                 foreach (var item in customerPublishDto)
                 {
                     item.Event = "Customer_Published";
                 }
+
+                return customerPublishDto;
+
                 _messageBusClient.PublishCustomerByName(customerPublishDto);      //Sending to Message Bus
             }
             catch (Exception ex)
             {
                 Console.WriteLine($"--> Couldn't send asynchronously: {ex.Message}");
-            }
+            }*/
         }
 
         private IEnumerable<Customer> FindCustomers(string name)
@@ -55,11 +68,5 @@ namespace Search_Service.EventProcessing
                 return custs; //if it is null?
             }
         }
-    }
-
-    enum EventType
-    {
-        CustomerPublished,
-        Undetermined
     }
 }

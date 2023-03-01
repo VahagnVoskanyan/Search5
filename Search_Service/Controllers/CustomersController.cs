@@ -1,10 +1,12 @@
 ﻿using AutoMapper;
+using Google.Protobuf.Collections;
 using Microsoft.AspNetCore.Mvc;
 using Search_Service.AsyncDataServices;
 using Search_Service.Data;
 using Search_Service.Dtos;
 using Search_Service.SyncDataServices.gRPC;
 using Search_Service.SyncDataServices.Http;
+using System.Text.Json;
 
 namespace Search_Service.Controllers
 {
@@ -35,18 +37,24 @@ namespace Search_Service.Controllers
 
         // Server Service
         [HttpGet("Name/{name}", Name = "Send Name")]
-        public ActionResult SendName(string name)
+        public async Task<IEnumerable<CustomerReadDto>> SendName(string name)
         {
             //Send Async Message
             try
             {
-                _messageBusClient.SendNameToBus(name);
+                var response = await _messageBusClient.SendNameToBusAsync(name);
+
+                //We can do this without Mapper (deserializing to CustomerReadDto)
+                var customerPublishDto = JsonSerializer.Deserialize<IEnumerable<CustomerPublishDto>>(response);
+                var customerReadDto = _mapper.Map<IEnumerable<CustomerReadDto>>(customerPublishDto);
+
+                return customerReadDto;
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"--> Couldn't send asynchronously: {ex.Message}");
+                Console.WriteLine($"--> Couldn't send or receive asynchronously: {ex.Message}");
+                return new List<CustomerReadDto>();  //returns []
             }
-            return Ok();
 
             /*Console.WriteLine("--> Sending Name by Http");
             try

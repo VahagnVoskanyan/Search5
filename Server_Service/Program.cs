@@ -26,7 +26,7 @@ namespace Server_Service
             builder.Services.AddDbContext<AppDbContext>(opt => opt.UseInMemoryDatabase("InMem"));
             builder.Services.AddScoped<ICustomerRepo, CustomerRepo>();
             builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies()); //For Dtos
-            builder.Services.AddSingleton<IMessageBusClient, MessageBusClient>(); //Singlton?
+            //builder.Services.AddSingleton<IMessageBusClient, MessageBusClient>(); //Singlton?
             builder.Services.AddSingleton<IEventProcessor, EventProcessor>(); // Singlton => for Message Bus
             builder.Services.AddHostedService<Worker>();
             builder.Services.AddHostedService<MessageBusSubscriber>();                //Subscribe from bus

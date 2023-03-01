@@ -1,7 +1,9 @@
-﻿namespace Search_Service.EventProcessing
+﻿using Server_Service.Dtos;
+
+namespace Search_Service.EventProcessing
 {
     public interface IEventProcessor
     {
-        void ProcessEvent(string message);
+        IEnumerable<CustomerPublishDto> ProcessEvent(string message);
     }
 }

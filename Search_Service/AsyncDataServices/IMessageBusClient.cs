@@ -2,6 +2,6 @@
 {
     public interface IMessageBusClient
     {
-        void SendNameToBus(string name);
+        Task<string> SendNameToBusAsync(string name, CancellationToken cancellationToken = default);
     }
 }
