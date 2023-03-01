@@ -33,7 +33,7 @@ namespace Search_Service.AsyncDataServices
 
                 Console.WriteLine("--> Connected to Message Bus");
 
-                // declare a server-named queue (from tutorial)(Response handling)
+                // declare a server-named queue (Response handling)(from tutorial)
                 _channel.QueueDeclare(_responseQueueName, true, false, false, null);
 
                 var consumer = new EventingBasicConsumer(_channel);
