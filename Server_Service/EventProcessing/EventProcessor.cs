@@ -65,7 +65,7 @@ namespace Search_Service.EventProcessing
 
                 var custs = repo.GetCustomerByName(name);
 
-                return custs; //if it is null?
+                return custs;
             }
         }
     }
