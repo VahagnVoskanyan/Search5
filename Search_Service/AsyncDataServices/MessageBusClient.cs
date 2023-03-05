@@ -98,7 +98,7 @@ namespace Search_Service.AsyncDataServices
                      basicProperties: props,
                      body: messageBytes);
 
-            Console.WriteLine($"We have sent: {message}");
+            Console.WriteLine($"--> We have sent: {message}");
 
             cancellationToken.Register(() => callbackMapper.TryRemove(correlationId, out _));
             return tcs.Task;
