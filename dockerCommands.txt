@@ -1,0 +1,31 @@
+docker build -t vahagn22/serverservice .
+docker run -p 8080:80 -d vahagn22/serverservice   //in my case ports can't be the same as in other service
+
+docker ps    //will show running containers
+
+docker pull vahagn22/serverservice
+docker pull vahagn22/ssearchservice
+
+docker build -t vahagn22/ssearchservice .
+docker run -p 9080:80 -d vahagn22/ssearchservice   //if want to see the output in terminal don't write '-d'
+
+
+K8S
+
+kubectl apply -f serverservice-depl.yaml
+kubectl apply -f serverservice-nodeport-srv.yaml
+
+kubectl get deployments                        //To see created one
+kubectl get pods
+kubectl get services                           //To see node port
+
+kubectl delete deployment serverservice-depl
+
+kubectl delete service servernpservice-srv
+
+kubectl rollout restart deployment serverservice-depl
+
+
+kubectl apply -f ssearchservice-depl.yaml
+
+kubectl delete deployment ssearchservice-depl

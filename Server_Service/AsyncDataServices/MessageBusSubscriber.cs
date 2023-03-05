@@ -29,7 +29,9 @@ namespace Server_Service.AsyncDataServices
 
         private void InitializeRabbitMQ()
         {
-            var factory = new ConnectionFactory() { Uri = new Uri(_configuration["AmqpUri"]) };
+            //var factory = new ConnectionFactory() { Uri = new Uri(_configuration["AmqpUri"]) };
+            var factory = new ConnectionFactory() { HostName = _configuration["RabbitMQLocalHost"],
+                                                    Port = int.Parse(_configuration["RabbitMQLocalPort"]) };
             _connection = factory.CreateConnection();
             _channel = _connection.CreateModel();
             _channel.QueueDeclare(queue: "searchqueue",

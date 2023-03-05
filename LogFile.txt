@@ -1,0 +1,477 @@
+2023-03-05 17:26:26.127 +04:00 [DBG] Registered model binder providers, in the following order: ["Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BinderTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ServicesModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BodyModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.HeaderModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FloatingPointTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.EnumTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.DateTimeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.SimpleTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.CancellationTokenModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ByteArrayModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FormFileModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FormCollectionModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.KeyValuePairModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.DictionaryModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ArrayModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.CollectionModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ComplexObjectModelBinderProvider"]
+2023-03-05 17:26:26.176 +04:00 [INF] Starting up the service
+2023-03-05 17:26:26.269 +04:00 [FTL] There was a problem staring the service
+System.ArgumentException: Wrong scheme in AMQP URI: localhost
+   at RabbitMQ.Client.ConnectionFactory.SetUri(Uri uri)
+   at RabbitMQ.Client.ConnectionFactory.set_Uri(Uri value)
+   at Server_Service.AsyncDataServices.MessageBusSubscriber.InitializeRabbitMQ() in C:\Users\vahag\Desktop\Vahagn\Practise\Search5\Server_Service\AsyncDataServices\MessageBusSubscriber.cs:line 32
+   at Server_Service.AsyncDataServices.MessageBusSubscriber..ctor(IConfiguration configuration, IEventProcessor eventProcessor) in C:\Users\vahag\Desktop\Vahagn\Practise\Search5\Server_Service\AsyncDataServices\MessageBusSubscriber.cs:line 27
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Span`1& arguments, Signature sig, Boolean constructor, Boolean wrapExceptions)
+   at System.Reflection.RuntimeConstructorInfo.Invoke(BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitConstructor(ConstructorCallSite constructorCallSite, RuntimeResolverContext context)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSiteMain(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitRootCache(ServiceCallSite callSite, RuntimeResolverContext context)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSite(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitIEnumerable(IEnumerableCallSite enumerableCallSite, RuntimeResolverContext context)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSiteMain(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitRootCache(ServiceCallSite callSite, RuntimeResolverContext context)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSite(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.Resolve(ServiceCallSite callSite, ServiceProviderEngineScope scope)
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.CreateServiceAccessor(Type serviceType)
+   at System.Collections.Concurrent.ConcurrentDictionary`2.GetOrAdd(TKey key, Func`2 valueFactory)
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.GetService(Type serviceType, ServiceProviderEngineScope serviceProviderEngineScope)
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.GetService(Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService(IServiceProvider provider, Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService[T](IServiceProvider provider)
+   at Microsoft.Extensions.Hosting.Internal.Host.StartAsync(CancellationToken cancellationToken)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.RunAsync(IHost host, CancellationToken token)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.RunAsync(IHost host, CancellationToken token)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.Run(IHost host)
+   at Microsoft.AspNetCore.Builder.WebApplication.Run(String url)
+   at Server_Service.Program.Main(String[] args) in C:\Users\vahag\Desktop\Vahagn\Practise\Search5\Server_Service\Program.cs:line 76
+2023-03-05 17:31:41.970 +04:00 [DBG] Registered model binder providers, in the following order: ["Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BinderTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ServicesModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BodyModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.HeaderModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FloatingPointTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.EnumTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.DateTimeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.SimpleTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.CancellationTokenModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ByteArrayModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FormFileModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FormCollectionModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.KeyValuePairModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.DictionaryModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ArrayModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.CollectionModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ComplexObjectModelBinderProvider"]
+2023-03-05 17:31:42.011 +04:00 [INF] Starting up the service
+2023-03-05 17:31:42.125 +04:00 [FTL] There was a problem staring the service
+RabbitMQ.Client.Exceptions.BrokerUnreachableException: None of the specified endpoints were reachable
+ ---> System.AggregateException: One or more errors occurred. (Connection failed)
+ ---> RabbitMQ.Client.Exceptions.ConnectFailureException: Connection failed
+ ---> System.Net.Sockets.SocketException (11001): No such host is known.
+   at System.Net.NameResolutionPal.ProcessResult(SocketError errorCode, GetAddrInfoExContext* context)
+   at System.Net.NameResolutionPal.GetAddressInfoExCallback(Int32 error, Int32 bytes, NativeOverlapped* overlapped)
+--- End of stack trace from previous location ---
+   at RabbitMQ.Client.Impl.TcpClientAdapter.ConnectAsync(String host, Int32 port)
+   at RabbitMQ.Client.Impl.TaskExtensions.TimeoutAfter(Task task, TimeSpan timeout)
+   at RabbitMQ.Client.Impl.SocketFrameHandler.ConnectOrFail(ITcpClient socket, AmqpTcpEndpoint endpoint, TimeSpan timeout)
+   --- End of inner exception stack trace ---
+   at RabbitMQ.Client.Impl.SocketFrameHandler.ConnectOrFail(ITcpClient socket, AmqpTcpEndpoint endpoint, TimeSpan timeout)
+   at RabbitMQ.Client.Impl.SocketFrameHandler.ConnectUsingAddressFamily(AmqpTcpEndpoint endpoint, Func`2 socketFactory, TimeSpan timeout, AddressFamily family)
+   at RabbitMQ.Client.Impl.SocketFrameHandler.ConnectUsingIPv4(AmqpTcpEndpoint endpoint, Func`2 socketFactory, TimeSpan timeout)
+   at RabbitMQ.Client.Impl.SocketFrameHandler..ctor(AmqpTcpEndpoint endpoint, Func`2 socketFactory, TimeSpan connectionTimeout, TimeSpan readTimeout, TimeSpan writeTimeout)
+   at RabbitMQ.Client.Framing.Impl.IProtocolExtensions.CreateFrameHandler(IProtocol protocol, AmqpTcpEndpoint endpoint, ArrayPool`1 pool, Func`2 socketFactory, TimeSpan connectionTimeout, TimeSpan readTimeout, TimeSpan writeTimeout)
+   at RabbitMQ.Client.ConnectionFactory.CreateFrameHandler(AmqpTcpEndpoint endpoint)
+   at RabbitMQ.Client.EndpointResolverExtensions.SelectOne[T](IEndpointResolver resolver, Func`2 selector)
+   --- End of inner exception stack trace ---
+   at RabbitMQ.Client.EndpointResolverExtensions.SelectOne[T](IEndpointResolver resolver, Func`2 selector)
+   at RabbitMQ.Client.Framing.Impl.AutorecoveringConnection.Init(IEndpointResolver endpoints)
+   at RabbitMQ.Client.ConnectionFactory.CreateConnection(IEndpointResolver endpointResolver, String clientProvidedName)
+   --- End of inner exception stack trace ---
+   at RabbitMQ.Client.ConnectionFactory.CreateConnection(IEndpointResolver endpointResolver, String clientProvidedName)
+   at RabbitMQ.Client.ConnectionFactory.CreateConnection(String clientProvidedName)
+   at RabbitMQ.Client.ConnectionFactory.CreateConnection()
+   at Server_Service.AsyncDataServices.MessageBusSubscriber.InitializeRabbitMQ() in C:\Users\vahag\Desktop\Vahagn\Practise\Search5\Server_Service\AsyncDataServices\MessageBusSubscriber.cs:line 34
+   at Server_Service.AsyncDataServices.MessageBusSubscriber..ctor(IConfiguration configuration, IEventProcessor eventProcessor) in C:\Users\vahag\Desktop\Vahagn\Practise\Search5\Server_Service\AsyncDataServices\MessageBusSubscriber.cs:line 27
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Span`1& arguments, Signature sig, Boolean constructor, Boolean wrapExceptions)
+   at System.Reflection.RuntimeConstructorInfo.Invoke(BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitConstructor(ConstructorCallSite constructorCallSite, RuntimeResolverContext context)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSiteMain(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitRootCache(ServiceCallSite callSite, RuntimeResolverContext context)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSite(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitIEnumerable(IEnumerableCallSite enumerableCallSite, RuntimeResolverContext context)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSiteMain(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitRootCache(ServiceCallSite callSite, RuntimeResolverContext context)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSite(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.Resolve(ServiceCallSite callSite, ServiceProviderEngineScope scope)
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.CreateServiceAccessor(Type serviceType)
+   at System.Collections.Concurrent.ConcurrentDictionary`2.GetOrAdd(TKey key, Func`2 valueFactory)
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.GetService(Type serviceType, ServiceProviderEngineScope serviceProviderEngineScope)
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.GetService(Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService(IServiceProvider provider, Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService[T](IServiceProvider provider)
+   at Microsoft.Extensions.Hosting.Internal.Host.StartAsync(CancellationToken cancellationToken)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.RunAsync(IHost host, CancellationToken token)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.RunAsync(IHost host, CancellationToken token)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.Run(IHost host)
+   at Microsoft.AspNetCore.Builder.WebApplication.Run(String url)
+   at Server_Service.Program.Main(String[] args) in C:\Users\vahag\Desktop\Vahagn\Practise\Search5\Server_Service\Program.cs:line 76
+2023-03-05 17:35:08.138 +04:00 [DBG] Registered model binder providers, in the following order: ["Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BinderTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ServicesModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BodyModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.HeaderModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FloatingPointTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.EnumTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.DateTimeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.SimpleTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.CancellationTokenModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ByteArrayModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FormFileModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FormCollectionModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.KeyValuePairModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.DictionaryModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ArrayModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.CollectionModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ComplexObjectModelBinderProvider"]
+2023-03-05 17:35:08.172 +04:00 [INF] Starting up the service
+2023-03-05 17:35:13.291 +04:00 [FTL] There was a problem staring the service
+RabbitMQ.Client.Exceptions.BrokerUnreachableException: None of the specified endpoints were reachable
+ ---> System.IO.IOException: connection.start was never received, likely due to a network timeout
+   at RabbitMQ.Client.Framing.Impl.Connection.StartAndTune()
+   at RabbitMQ.Client.Framing.Impl.Connection.Open(Boolean insist)
+   at RabbitMQ.Client.Framing.Impl.Connection..ctor(IConnectionFactory factory, Boolean insist, IFrameHandler frameHandler, String clientProvidedName)
+   at RabbitMQ.Client.Framing.Impl.Connection..ctor(IConnectionFactory factory, Boolean insist, IFrameHandler frameHandler, ArrayPool`1 memoryPool, String clientProvidedName)
+   at RabbitMQ.Client.Framing.Impl.AutorecoveringConnection.Init(IFrameHandler fh)
+   at RabbitMQ.Client.Framing.Impl.AutorecoveringConnection.Init(IEndpointResolver endpoints)
+   at RabbitMQ.Client.ConnectionFactory.CreateConnection(IEndpointResolver endpointResolver, String clientProvidedName)
+   --- End of inner exception stack trace ---
+   at RabbitMQ.Client.ConnectionFactory.CreateConnection(IEndpointResolver endpointResolver, String clientProvidedName)
+   at RabbitMQ.Client.ConnectionFactory.CreateConnection(String clientProvidedName)
+   at RabbitMQ.Client.ConnectionFactory.CreateConnection()
+   at Server_Service.AsyncDataServices.MessageBusSubscriber.InitializeRabbitMQ() in C:\Users\vahag\Desktop\Vahagn\Practise\Search5\Server_Service\AsyncDataServices\MessageBusSubscriber.cs:line 35
+   at Server_Service.AsyncDataServices.MessageBusSubscriber..ctor(IConfiguration configuration, IEventProcessor eventProcessor) in C:\Users\vahag\Desktop\Vahagn\Practise\Search5\Server_Service\AsyncDataServices\MessageBusSubscriber.cs:line 27
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Span`1& arguments, Signature sig, Boolean constructor, Boolean wrapExceptions)
+   at System.Reflection.RuntimeConstructorInfo.Invoke(BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitConstructor(ConstructorCallSite constructorCallSite, RuntimeResolverContext context)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSiteMain(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitRootCache(ServiceCallSite callSite, RuntimeResolverContext context)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSite(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitIEnumerable(IEnumerableCallSite enumerableCallSite, RuntimeResolverContext context)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSiteMain(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitRootCache(ServiceCallSite callSite, RuntimeResolverContext context)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSite(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.Resolve(ServiceCallSite callSite, ServiceProviderEngineScope scope)
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.CreateServiceAccessor(Type serviceType)
+   at System.Collections.Concurrent.ConcurrentDictionary`2.GetOrAdd(TKey key, Func`2 valueFactory)
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.GetService(Type serviceType, ServiceProviderEngineScope serviceProviderEngineScope)
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.GetService(Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService(IServiceProvider provider, Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService[T](IServiceProvider provider)
+   at Microsoft.Extensions.Hosting.Internal.Host.StartAsync(CancellationToken cancellationToken)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.RunAsync(IHost host, CancellationToken token)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.RunAsync(IHost host, CancellationToken token)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.Run(IHost host)
+   at Microsoft.AspNetCore.Builder.WebApplication.Run(String url)
+   at Server_Service.Program.Main(String[] args) in C:\Users\vahag\Desktop\Vahagn\Practise\Search5\Server_Service\Program.cs:line 76
+2023-03-05 17:35:44.867 +04:00 [DBG] Registered model binder providers, in the following order: ["Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BinderTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ServicesModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BodyModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.HeaderModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FloatingPointTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.EnumTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.DateTimeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.SimpleTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.CancellationTokenModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ByteArrayModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FormFileModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FormCollectionModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.KeyValuePairModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.DictionaryModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ArrayModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.CollectionModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ComplexObjectModelBinderProvider"]
+2023-03-05 17:35:44.901 +04:00 [INF] Starting up the service
+2023-03-05 17:35:50.015 +04:00 [FTL] There was a problem staring the service
+RabbitMQ.Client.Exceptions.BrokerUnreachableException: None of the specified endpoints were reachable
+ ---> System.IO.IOException: connection.start was never received, likely due to a network timeout
+   at RabbitMQ.Client.Framing.Impl.Connection.StartAndTune()
+   at RabbitMQ.Client.Framing.Impl.Connection.Open(Boolean insist)
+   at RabbitMQ.Client.Framing.Impl.Connection..ctor(IConnectionFactory factory, Boolean insist, IFrameHandler frameHandler, String clientProvidedName)
+   at RabbitMQ.Client.Framing.Impl.Connection..ctor(IConnectionFactory factory, Boolean insist, IFrameHandler frameHandler, ArrayPool`1 memoryPool, String clientProvidedName)
+   at RabbitMQ.Client.Framing.Impl.AutorecoveringConnection.Init(IFrameHandler fh)
+   at RabbitMQ.Client.Framing.Impl.AutorecoveringConnection.Init(IEndpointResolver endpoints)
+   at RabbitMQ.Client.ConnectionFactory.CreateConnection(IEndpointResolver endpointResolver, String clientProvidedName)
+   --- End of inner exception stack trace ---
+   at RabbitMQ.Client.ConnectionFactory.CreateConnection(IEndpointResolver endpointResolver, String clientProvidedName)
+   at RabbitMQ.Client.ConnectionFactory.CreateConnection(String clientProvidedName)
+   at RabbitMQ.Client.ConnectionFactory.CreateConnection()
+   at Server_Service.AsyncDataServices.MessageBusSubscriber.InitializeRabbitMQ() in C:\Users\vahag\Desktop\Vahagn\Practise\Search5\Server_Service\AsyncDataServices\MessageBusSubscriber.cs:line 35
+   at Server_Service.AsyncDataServices.MessageBusSubscriber..ctor(IConfiguration configuration, IEventProcessor eventProcessor) in C:\Users\vahag\Desktop\Vahagn\Practise\Search5\Server_Service\AsyncDataServices\MessageBusSubscriber.cs:line 27
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Span`1& arguments, Signature sig, Boolean constructor, Boolean wrapExceptions)
+   at System.Reflection.RuntimeConstructorInfo.Invoke(BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitConstructor(ConstructorCallSite constructorCallSite, RuntimeResolverContext context)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSiteMain(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitRootCache(ServiceCallSite callSite, RuntimeResolverContext context)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSite(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitIEnumerable(IEnumerableCallSite enumerableCallSite, RuntimeResolverContext context)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSiteMain(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitRootCache(ServiceCallSite callSite, RuntimeResolverContext context)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSite(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.Resolve(ServiceCallSite callSite, ServiceProviderEngineScope scope)
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.CreateServiceAccessor(Type serviceType)
+   at System.Collections.Concurrent.ConcurrentDictionary`2.GetOrAdd(TKey key, Func`2 valueFactory)
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.GetService(Type serviceType, ServiceProviderEngineScope serviceProviderEngineScope)
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.GetService(Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService(IServiceProvider provider, Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService[T](IServiceProvider provider)
+   at Microsoft.Extensions.Hosting.Internal.Host.StartAsync(CancellationToken cancellationToken)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.RunAsync(IHost host, CancellationToken token)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.RunAsync(IHost host, CancellationToken token)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.Run(IHost host)
+   at Microsoft.AspNetCore.Builder.WebApplication.Run(String url)
+   at Server_Service.Program.Main(String[] args) in C:\Users\vahag\Desktop\Vahagn\Practise\Search5\Server_Service\Program.cs:line 76
+2023-03-05 17:37:51.368 +04:00 [DBG] Registered model binder providers, in the following order: ["Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BinderTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ServicesModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BodyModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.HeaderModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FloatingPointTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.EnumTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.DateTimeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.SimpleTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.CancellationTokenModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ByteArrayModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FormFileModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FormCollectionModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.KeyValuePairModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.DictionaryModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ArrayModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.CollectionModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ComplexObjectModelBinderProvider"]
+2023-03-05 17:37:51.402 +04:00 [INF] Starting up the service
+2023-03-05 17:37:51.528 +04:00 [INF] Worker running at: "2023-03-05T17:37:51.5263563+04:00"
+2023-03-05 17:37:51.584 +04:00 [INF] Now listening on: https://localhost:7108
+2023-03-05 17:37:51.585 +04:00 [INF] Now listening on: http://localhost:5055
+2023-03-05 17:37:51.586 +04:00 [DBG] Loaded hosting startup assembly Server_Service
+2023-03-05 17:38:12.135 +04:00 [DBG] Registered model binder providers, in the following order: ["Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BinderTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ServicesModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BodyModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.HeaderModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FloatingPointTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.EnumTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.DateTimeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.SimpleTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.CancellationTokenModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ByteArrayModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FormFileModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FormCollectionModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.KeyValuePairModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.DictionaryModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ArrayModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.CollectionModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ComplexObjectModelBinderProvider"]
+2023-03-05 17:38:12.166 +04:00 [INF] Starting up the service
+2023-03-05 17:38:17.271 +04:00 [FTL] There was a problem staring the service
+RabbitMQ.Client.Exceptions.BrokerUnreachableException: None of the specified endpoints were reachable
+ ---> System.IO.IOException: connection.start was never received, likely due to a network timeout
+   at RabbitMQ.Client.Framing.Impl.Connection.StartAndTune()
+   at RabbitMQ.Client.Framing.Impl.Connection.Open(Boolean insist)
+   at RabbitMQ.Client.Framing.Impl.Connection..ctor(IConnectionFactory factory, Boolean insist, IFrameHandler frameHandler, String clientProvidedName)
+   at RabbitMQ.Client.Framing.Impl.Connection..ctor(IConnectionFactory factory, Boolean insist, IFrameHandler frameHandler, ArrayPool`1 memoryPool, String clientProvidedName)
+   at RabbitMQ.Client.Framing.Impl.AutorecoveringConnection.Init(IFrameHandler fh)
+   at RabbitMQ.Client.Framing.Impl.AutorecoveringConnection.Init(IEndpointResolver endpoints)
+   at RabbitMQ.Client.ConnectionFactory.CreateConnection(IEndpointResolver endpointResolver, String clientProvidedName)
+   --- End of inner exception stack trace ---
+   at RabbitMQ.Client.ConnectionFactory.CreateConnection(IEndpointResolver endpointResolver, String clientProvidedName)
+   at RabbitMQ.Client.ConnectionFactory.CreateConnection(String clientProvidedName)
+   at RabbitMQ.Client.ConnectionFactory.CreateConnection()
+   at Server_Service.AsyncDataServices.MessageBusSubscriber.InitializeRabbitMQ() in C:\Users\vahag\Desktop\Vahagn\Practise\Search5\Server_Service\AsyncDataServices\MessageBusSubscriber.cs:line 35
+   at Server_Service.AsyncDataServices.MessageBusSubscriber..ctor(IConfiguration configuration, IEventProcessor eventProcessor) in C:\Users\vahag\Desktop\Vahagn\Practise\Search5\Server_Service\AsyncDataServices\MessageBusSubscriber.cs:line 27
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Span`1& arguments, Signature sig, Boolean constructor, Boolean wrapExceptions)
+   at System.Reflection.RuntimeConstructorInfo.Invoke(BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitConstructor(ConstructorCallSite constructorCallSite, RuntimeResolverContext context)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSiteMain(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitRootCache(ServiceCallSite callSite, RuntimeResolverContext context)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSite(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitIEnumerable(IEnumerableCallSite enumerableCallSite, RuntimeResolverContext context)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSiteMain(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitRootCache(ServiceCallSite callSite, RuntimeResolverContext context)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSite(ServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.Resolve(ServiceCallSite callSite, ServiceProviderEngineScope scope)
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.CreateServiceAccessor(Type serviceType)
+   at System.Collections.Concurrent.ConcurrentDictionary`2.GetOrAdd(TKey key, Func`2 valueFactory)
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.GetService(Type serviceType, ServiceProviderEngineScope serviceProviderEngineScope)
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.GetService(Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService(IServiceProvider provider, Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService[T](IServiceProvider provider)
+   at Microsoft.Extensions.Hosting.Internal.Host.StartAsync(CancellationToken cancellationToken)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.RunAsync(IHost host, CancellationToken token)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.RunAsync(IHost host, CancellationToken token)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.Run(IHost host)
+   at Microsoft.AspNetCore.Builder.WebApplication.Run(String url)
+   at Server_Service.Program.Main(String[] args) in C:\Users\vahag\Desktop\Vahagn\Practise\Search5\Server_Service\Program.cs:line 76
+2023-03-05 17:38:32.883 +04:00 [DBG] Registered model binder providers, in the following order: ["Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BinderTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ServicesModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BodyModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.HeaderModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FloatingPointTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.EnumTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.DateTimeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.SimpleTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.CancellationTokenModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ByteArrayModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FormFileModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FormCollectionModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.KeyValuePairModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.DictionaryModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ArrayModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.CollectionModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ComplexObjectModelBinderProvider"]
+2023-03-05 17:38:32.919 +04:00 [INF] Starting up the service
+2023-03-05 17:38:33.048 +04:00 [INF] Worker running at: "2023-03-05T17:38:33.0455497+04:00"
+2023-03-05 17:38:33.096 +04:00 [INF] Now listening on: https://localhost:7108
+2023-03-05 17:38:33.099 +04:00 [INF] Now listening on: http://localhost:5055
+2023-03-05 17:38:33.103 +04:00 [DBG] Loaded hosting startup assembly Server_Service
+2023-03-05 17:38:43.063 +04:00 [INF] Worker running at: "2023-03-05T17:38:43.0636941+04:00"
+2023-03-05 17:38:53.079 +04:00 [INF] Worker running at: "2023-03-05T17:38:53.0797189+04:00"
+2023-03-05 17:39:03.091 +04:00 [INF] Worker running at: "2023-03-05T17:39:03.0916096+04:00"
+2023-03-05 17:39:13.108 +04:00 [INF] Worker running at: "2023-03-05T17:39:13.1080286+04:00"
+2023-03-05 17:39:23.128 +04:00 [INF] Worker running at: "2023-03-05T17:39:23.1283451+04:00"
+2023-03-05 17:39:33.140 +04:00 [INF] Worker running at: "2023-03-05T17:39:33.1408750+04:00"
+2023-03-05 17:39:43.156 +04:00 [INF] Worker running at: "2023-03-05T17:39:43.1564973+04:00"
+2023-03-05 17:39:47.159 +04:00 [DBG] Entity Framework Core 7.0.2 initialized 'AppDbContext' using provider 'Microsoft.EntityFrameworkCore.InMemory:7.0.2' with options: StoreName=InMem 
+2023-03-05 17:39:47.171 +04:00 [DBG] Compiling query expression: 
+'DbSet<Customer>()'
+2023-03-05 17:39:47.210 +04:00 [DBG] Generated query execution expression: 
+'queryContext => new QueryingEnumerable<Customer>(
+    queryContext, 
+    InMemoryShapedQueryCompilingExpressionVisitor.Table(
+        queryContext: queryContext, 
+        entityType: EntityType: Customer)
+        .Select(valueBuffer => new ValueBuffer(new object[]
+        { 
+            (object)ExpressionExtensions.ValueBufferTryReadValue<int>(
+                valueBuffer: valueBuffer, 
+                index: 0, 
+                property: Property: Customer.Id (int) Required PK AfterSave:Throw ValueGenerated.OnAdd), 
+            ExpressionExtensions.ValueBufferTryReadValue<string>(
+                valueBuffer: valueBuffer, 
+                index: 1, 
+                property: Property: Customer.Address (string) Required), 
+            ExpressionExtensions.ValueBufferTryReadValue<string>(
+                valueBuffer: valueBuffer, 
+                index: 2, 
+                property: Property: Customer.City (string) Required), 
+            ExpressionExtensions.ValueBufferTryReadValue<string>(
+                valueBuffer: valueBuffer, 
+                index: 3, 
+                property: Property: Customer.Country (string) Required), 
+            ExpressionExtensions.ValueBufferTryReadValue<string>(
+                valueBuffer: valueBuffer, 
+                index: 4, 
+                property: Property: Customer.Email (string) Required), 
+            ExpressionExtensions.ValueBufferTryReadValue<string>(
+                valueBuffer: valueBuffer, 
+                index: 5, 
+                property: Property: Customer.Name (string) Required), 
+            ExpressionExtensions.ValueBufferTryReadValue<string>(
+                valueBuffer: valueBuffer, 
+                index: 6, 
+                property: Property: Customer.Phone (string) Required), 
+            ExpressionExtensions.ValueBufferTryReadValue<string>(
+                valueBuffer: valueBuffer, 
+                index: 7, 
+                property: Property: Customer.PostalCode (string) Required), 
+            ExpressionExtensions.ValueBufferTryReadValue<string>(
+                valueBuffer: valueBuffer, 
+                index: 8, 
+                property: Property: Customer.Region (string) Required), 
+            ExpressionExtensions.ValueBufferTryReadValue<string>(
+                valueBuffer: valueBuffer, 
+                index: 9, 
+                property: Property: Customer.Surname (string) Required) 
+        })), 
+    Func<QueryContext, ValueBuffer, Customer>, 
+    Server_Service.Data.AppDbContext, 
+    False, 
+    True
+)'
+2023-03-05 17:39:47.228 +04:00 [DBG] Context 'AppDbContext' started tracking 'Customer' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2023-03-05 17:39:47.231 +04:00 [DBG] Context 'AppDbContext' started tracking 'Customer' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2023-03-05 17:39:47.232 +04:00 [DBG] Context 'AppDbContext' started tracking 'Customer' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2023-03-05 17:39:47.233 +04:00 [DBG] Context 'AppDbContext' started tracking 'Customer' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2023-03-05 17:39:47.235 +04:00 [DBG] 'AppDbContext' disposed.
+2023-03-05 17:39:53.162 +04:00 [INF] Worker running at: "2023-03-05T17:39:53.1621251+04:00"
+2023-03-05 17:39:53.533 +04:00 [DBG] Entity Framework Core 7.0.2 initialized 'AppDbContext' using provider 'Microsoft.EntityFrameworkCore.InMemory:7.0.2' with options: StoreName=InMem 
+2023-03-05 17:39:53.539 +04:00 [DBG] Context 'AppDbContext' started tracking 'Customer' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2023-03-05 17:39:53.541 +04:00 [DBG] Context 'AppDbContext' started tracking 'Customer' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2023-03-05 17:39:53.542 +04:00 [DBG] Context 'AppDbContext' started tracking 'Customer' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2023-03-05 17:39:53.544 +04:00 [DBG] Context 'AppDbContext' started tracking 'Customer' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2023-03-05 17:39:53.545 +04:00 [DBG] 'AppDbContext' disposed.
+2023-03-05 17:39:55.810 +04:00 [DBG] Entity Framework Core 7.0.2 initialized 'AppDbContext' using provider 'Microsoft.EntityFrameworkCore.InMemory:7.0.2' with options: StoreName=InMem 
+2023-03-05 17:39:55.813 +04:00 [DBG] Context 'AppDbContext' started tracking 'Customer' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2023-03-05 17:39:55.815 +04:00 [DBG] Context 'AppDbContext' started tracking 'Customer' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2023-03-05 17:39:55.816 +04:00 [DBG] Context 'AppDbContext' started tracking 'Customer' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2023-03-05 17:39:55.818 +04:00 [DBG] Context 'AppDbContext' started tracking 'Customer' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2023-03-05 17:39:55.820 +04:00 [DBG] 'AppDbContext' disposed.
+2023-03-05 17:39:56.208 +04:00 [DBG] Entity Framework Core 7.0.2 initialized 'AppDbContext' using provider 'Microsoft.EntityFrameworkCore.InMemory:7.0.2' with options: StoreName=InMem 
+2023-03-05 17:39:56.210 +04:00 [DBG] Context 'AppDbContext' started tracking 'Customer' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2023-03-05 17:39:56.212 +04:00 [DBG] Context 'AppDbContext' started tracking 'Customer' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2023-03-05 17:39:56.215 +04:00 [DBG] Context 'AppDbContext' started tracking 'Customer' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2023-03-05 17:39:56.217 +04:00 [DBG] Context 'AppDbContext' started tracking 'Customer' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2023-03-05 17:39:56.218 +04:00 [DBG] 'AppDbContext' disposed.
+2023-03-05 17:39:56.389 +04:00 [DBG] Entity Framework Core 7.0.2 initialized 'AppDbContext' using provider 'Microsoft.EntityFrameworkCore.InMemory:7.0.2' with options: StoreName=InMem 
+2023-03-05 17:39:56.392 +04:00 [DBG] Context 'AppDbContext' started tracking 'Customer' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2023-03-05 17:39:56.394 +04:00 [DBG] Context 'AppDbContext' started tracking 'Customer' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2023-03-05 17:39:56.396 +04:00 [DBG] Context 'AppDbContext' started tracking 'Customer' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2023-03-05 17:39:56.398 +04:00 [DBG] Context 'AppDbContext' started tracking 'Customer' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2023-03-05 17:39:56.399 +04:00 [DBG] 'AppDbContext' disposed.
+2023-03-05 17:39:56.541 +04:00 [DBG] Entity Framework Core 7.0.2 initialized 'AppDbContext' using provider 'Microsoft.EntityFrameworkCore.InMemory:7.0.2' with options: StoreName=InMem 
+2023-03-05 17:39:56.543 +04:00 [DBG] Context 'AppDbContext' started tracking 'Customer' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2023-03-05 17:39:56.546 +04:00 [DBG] Context 'AppDbContext' started tracking 'Customer' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2023-03-05 17:39:56.549 +04:00 [DBG] Context 'AppDbContext' started tracking 'Customer' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2023-03-05 17:39:56.552 +04:00 [DBG] Context 'AppDbContext' started tracking 'Customer' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2023-03-05 17:39:56.554 +04:00 [DBG] 'AppDbContext' disposed.
+2023-03-05 17:39:56.876 +04:00 [DBG] Entity Framework Core 7.0.2 initialized 'AppDbContext' using provider 'Microsoft.EntityFrameworkCore.InMemory:7.0.2' with options: StoreName=InMem 
+2023-03-05 17:39:56.878 +04:00 [DBG] Context 'AppDbContext' started tracking 'Customer' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2023-03-05 17:39:56.880 +04:00 [DBG] Context 'AppDbContext' started tracking 'Customer' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2023-03-05 17:39:56.882 +04:00 [DBG] Context 'AppDbContext' started tracking 'Customer' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2023-03-05 17:39:56.883 +04:00 [DBG] Context 'AppDbContext' started tracking 'Customer' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2023-03-05 17:39:56.884 +04:00 [DBG] 'AppDbContext' disposed.
+2023-03-05 17:39:57.036 +04:00 [DBG] Entity Framework Core 7.0.2 initialized 'AppDbContext' using provider 'Microsoft.EntityFrameworkCore.InMemory:7.0.2' with options: StoreName=InMem 
+2023-03-05 17:39:57.038 +04:00 [DBG] Context 'AppDbContext' started tracking 'Customer' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2023-03-05 17:39:57.041 +04:00 [DBG] Context 'AppDbContext' started tracking 'Customer' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2023-03-05 17:39:57.043 +04:00 [DBG] Context 'AppDbContext' started tracking 'Customer' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2023-03-05 17:39:57.046 +04:00 [DBG] Context 'AppDbContext' started tracking 'Customer' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2023-03-05 17:39:57.049 +04:00 [DBG] 'AppDbContext' disposed.
+2023-03-05 17:39:57.199 +04:00 [DBG] Entity Framework Core 7.0.2 initialized 'AppDbContext' using provider 'Microsoft.EntityFrameworkCore.InMemory:7.0.2' with options: StoreName=InMem 
+2023-03-05 17:39:57.200 +04:00 [DBG] Context 'AppDbContext' started tracking 'Customer' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2023-03-05 17:39:57.202 +04:00 [DBG] Context 'AppDbContext' started tracking 'Customer' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2023-03-05 17:39:57.203 +04:00 [DBG] Context 'AppDbContext' started tracking 'Customer' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2023-03-05 17:39:57.204 +04:00 [DBG] Context 'AppDbContext' started tracking 'Customer' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2023-03-05 17:39:57.205 +04:00 [DBG] 'AppDbContext' disposed.
+2023-03-05 17:39:57.365 +04:00 [DBG] Entity Framework Core 7.0.2 initialized 'AppDbContext' using provider 'Microsoft.EntityFrameworkCore.InMemory:7.0.2' with options: StoreName=InMem 
+2023-03-05 17:39:57.368 +04:00 [DBG] Context 'AppDbContext' started tracking 'Customer' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2023-03-05 17:39:57.369 +04:00 [DBG] Context 'AppDbContext' started tracking 'Customer' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2023-03-05 17:39:57.370 +04:00 [DBG] Context 'AppDbContext' started tracking 'Customer' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2023-03-05 17:39:57.373 +04:00 [DBG] Context 'AppDbContext' started tracking 'Customer' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2023-03-05 17:39:57.375 +04:00 [DBG] 'AppDbContext' disposed.
+2023-03-05 17:39:57.532 +04:00 [DBG] Entity Framework Core 7.0.2 initialized 'AppDbContext' using provider 'Microsoft.EntityFrameworkCore.InMemory:7.0.2' with options: StoreName=InMem 
+2023-03-05 17:39:57.537 +04:00 [DBG] Context 'AppDbContext' started tracking 'Customer' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2023-03-05 17:39:57.539 +04:00 [DBG] Context 'AppDbContext' started tracking 'Customer' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2023-03-05 17:39:57.541 +04:00 [DBG] Context 'AppDbContext' started tracking 'Customer' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2023-03-05 17:39:57.543 +04:00 [DBG] Context 'AppDbContext' started tracking 'Customer' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2023-03-05 17:39:57.545 +04:00 [DBG] 'AppDbContext' disposed.
+2023-03-05 17:39:57.695 +04:00 [DBG] Entity Framework Core 7.0.2 initialized 'AppDbContext' using provider 'Microsoft.EntityFrameworkCore.InMemory:7.0.2' with options: StoreName=InMem 
+2023-03-05 17:39:57.697 +04:00 [DBG] Context 'AppDbContext' started tracking 'Customer' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2023-03-05 17:39:57.698 +04:00 [DBG] Context 'AppDbContext' started tracking 'Customer' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2023-03-05 17:39:57.699 +04:00 [DBG] Context 'AppDbContext' started tracking 'Customer' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2023-03-05 17:39:57.700 +04:00 [DBG] Context 'AppDbContext' started tracking 'Customer' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2023-03-05 17:39:57.701 +04:00 [DBG] 'AppDbContext' disposed.
+2023-03-05 17:39:57.860 +04:00 [DBG] Entity Framework Core 7.0.2 initialized 'AppDbContext' using provider 'Microsoft.EntityFrameworkCore.InMemory:7.0.2' with options: StoreName=InMem 
+2023-03-05 17:39:57.861 +04:00 [DBG] Context 'AppDbContext' started tracking 'Customer' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2023-03-05 17:39:57.862 +04:00 [DBG] Context 'AppDbContext' started tracking 'Customer' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2023-03-05 17:39:57.863 +04:00 [DBG] Context 'AppDbContext' started tracking 'Customer' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2023-03-05 17:39:57.864 +04:00 [DBG] Context 'AppDbContext' started tracking 'Customer' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2023-03-05 17:39:57.865 +04:00 [DBG] 'AppDbContext' disposed.
+2023-03-05 17:39:58.029 +04:00 [DBG] Entity Framework Core 7.0.2 initialized 'AppDbContext' using provider 'Microsoft.EntityFrameworkCore.InMemory:7.0.2' with options: StoreName=InMem 
+2023-03-05 17:39:58.030 +04:00 [DBG] Context 'AppDbContext' started tracking 'Customer' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2023-03-05 17:39:58.032 +04:00 [DBG] Context 'AppDbContext' started tracking 'Customer' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2023-03-05 17:39:58.033 +04:00 [DBG] Context 'AppDbContext' started tracking 'Customer' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2023-03-05 17:39:58.034 +04:00 [DBG] Context 'AppDbContext' started tracking 'Customer' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2023-03-05 17:39:58.035 +04:00 [DBG] 'AppDbContext' disposed.
+2023-03-05 17:39:58.198 +04:00 [DBG] Entity Framework Core 7.0.2 initialized 'AppDbContext' using provider 'Microsoft.EntityFrameworkCore.InMemory:7.0.2' with options: StoreName=InMem 
+2023-03-05 17:39:58.202 +04:00 [DBG] Context 'AppDbContext' started tracking 'Customer' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2023-03-05 17:39:58.204 +04:00 [DBG] Context 'AppDbContext' started tracking 'Customer' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2023-03-05 17:39:58.205 +04:00 [DBG] Context 'AppDbContext' started tracking 'Customer' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2023-03-05 17:39:58.207 +04:00 [DBG] Context 'AppDbContext' started tracking 'Customer' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2023-03-05 17:39:58.209 +04:00 [DBG] 'AppDbContext' disposed.
+2023-03-05 17:39:58.365 +04:00 [DBG] Entity Framework Core 7.0.2 initialized 'AppDbContext' using provider 'Microsoft.EntityFrameworkCore.InMemory:7.0.2' with options: StoreName=InMem 
+2023-03-05 17:39:58.368 +04:00 [DBG] Context 'AppDbContext' started tracking 'Customer' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2023-03-05 17:39:58.369 +04:00 [DBG] Context 'AppDbContext' started tracking 'Customer' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2023-03-05 17:39:58.370 +04:00 [DBG] Context 'AppDbContext' started tracking 'Customer' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2023-03-05 17:39:58.371 +04:00 [DBG] Context 'AppDbContext' started tracking 'Customer' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2023-03-05 17:39:58.375 +04:00 [DBG] 'AppDbContext' disposed.
+2023-03-05 17:39:58.557 +04:00 [DBG] Entity Framework Core 7.0.2 initialized 'AppDbContext' using provider 'Microsoft.EntityFrameworkCore.InMemory:7.0.2' with options: StoreName=InMem 
+2023-03-05 17:39:58.560 +04:00 [DBG] Context 'AppDbContext' started tracking 'Customer' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2023-03-05 17:39:58.562 +04:00 [DBG] Context 'AppDbContext' started tracking 'Customer' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2023-03-05 17:39:58.564 +04:00 [DBG] Context 'AppDbContext' started tracking 'Customer' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2023-03-05 17:39:58.566 +04:00 [DBG] Context 'AppDbContext' started tracking 'Customer' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2023-03-05 17:39:58.567 +04:00 [DBG] 'AppDbContext' disposed.
+2023-03-05 17:39:58.733 +04:00 [DBG] Entity Framework Core 7.0.2 initialized 'AppDbContext' using provider 'Microsoft.EntityFrameworkCore.InMemory:7.0.2' with options: StoreName=InMem 
+2023-03-05 17:39:58.735 +04:00 [DBG] Context 'AppDbContext' started tracking 'Customer' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2023-03-05 17:39:58.736 +04:00 [DBG] Context 'AppDbContext' started tracking 'Customer' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2023-03-05 17:39:58.736 +04:00 [DBG] Context 'AppDbContext' started tracking 'Customer' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2023-03-05 17:39:58.737 +04:00 [DBG] Context 'AppDbContext' started tracking 'Customer' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2023-03-05 17:39:58.738 +04:00 [DBG] 'AppDbContext' disposed.
+2023-03-05 17:39:58.907 +04:00 [DBG] Entity Framework Core 7.0.2 initialized 'AppDbContext' using provider 'Microsoft.EntityFrameworkCore.InMemory:7.0.2' with options: StoreName=InMem 
+2023-03-05 17:39:58.909 +04:00 [DBG] Context 'AppDbContext' started tracking 'Customer' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2023-03-05 17:39:58.911 +04:00 [DBG] Context 'AppDbContext' started tracking 'Customer' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2023-03-05 17:39:58.914 +04:00 [DBG] Context 'AppDbContext' started tracking 'Customer' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2023-03-05 17:39:58.916 +04:00 [DBG] Context 'AppDbContext' started tracking 'Customer' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2023-03-05 17:39:58.918 +04:00 [DBG] 'AppDbContext' disposed.
+2023-03-05 17:39:59.060 +04:00 [DBG] Entity Framework Core 7.0.2 initialized 'AppDbContext' using provider 'Microsoft.EntityFrameworkCore.InMemory:7.0.2' with options: StoreName=InMem 
+2023-03-05 17:39:59.070 +04:00 [DBG] Context 'AppDbContext' started tracking 'Customer' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2023-03-05 17:39:59.074 +04:00 [DBG] Context 'AppDbContext' started tracking 'Customer' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2023-03-05 17:39:59.076 +04:00 [DBG] Context 'AppDbContext' started tracking 'Customer' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2023-03-05 17:39:59.077 +04:00 [DBG] Context 'AppDbContext' started tracking 'Customer' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2023-03-05 17:39:59.078 +04:00 [DBG] 'AppDbContext' disposed.
+2023-03-05 17:40:02.756 +04:00 [DBG] Entity Framework Core 7.0.2 initialized 'AppDbContext' using provider 'Microsoft.EntityFrameworkCore.InMemory:7.0.2' with options: StoreName=InMem 
+2023-03-05 17:40:02.759 +04:00 [DBG] Context 'AppDbContext' started tracking 'Customer' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2023-03-05 17:40:02.760 +04:00 [DBG] Context 'AppDbContext' started tracking 'Customer' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2023-03-05 17:40:02.762 +04:00 [DBG] Context 'AppDbContext' started tracking 'Customer' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2023-03-05 17:40:02.763 +04:00 [DBG] Context 'AppDbContext' started tracking 'Customer' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2023-03-05 17:40:02.765 +04:00 [DBG] 'AppDbContext' disposed.
+2023-03-05 17:40:02.971 +04:00 [DBG] Entity Framework Core 7.0.2 initialized 'AppDbContext' using provider 'Microsoft.EntityFrameworkCore.InMemory:7.0.2' with options: StoreName=InMem 
+2023-03-05 17:40:02.973 +04:00 [DBG] Context 'AppDbContext' started tracking 'Customer' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2023-03-05 17:40:02.977 +04:00 [DBG] Context 'AppDbContext' started tracking 'Customer' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2023-03-05 17:40:02.978 +04:00 [DBG] Context 'AppDbContext' started tracking 'Customer' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2023-03-05 17:40:02.980 +04:00 [DBG] Context 'AppDbContext' started tracking 'Customer' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2023-03-05 17:40:02.981 +04:00 [DBG] 'AppDbContext' disposed.
+2023-03-05 17:40:03.180 +04:00 [INF] Worker running at: "2023-03-05T17:40:03.1806509+04:00"
+2023-03-05 17:40:03.516 +04:00 [DBG] Entity Framework Core 7.0.2 initialized 'AppDbContext' using provider 'Microsoft.EntityFrameworkCore.InMemory:7.0.2' with options: StoreName=InMem 
+2023-03-05 17:40:03.523 +04:00 [DBG] Context 'AppDbContext' started tracking 'Customer' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2023-03-05 17:40:03.525 +04:00 [DBG] Context 'AppDbContext' started tracking 'Customer' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2023-03-05 17:40:03.527 +04:00 [DBG] Context 'AppDbContext' started tracking 'Customer' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2023-03-05 17:40:03.528 +04:00 [DBG] Context 'AppDbContext' started tracking 'Customer' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2023-03-05 17:40:03.530 +04:00 [DBG] 'AppDbContext' disposed.
+2023-03-05 17:40:03.696 +04:00 [DBG] Entity Framework Core 7.0.2 initialized 'AppDbContext' using provider 'Microsoft.EntityFrameworkCore.InMemory:7.0.2' with options: StoreName=InMem 
+2023-03-05 17:40:03.711 +04:00 [DBG] Context 'AppDbContext' started tracking 'Customer' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2023-03-05 17:40:03.715 +04:00 [DBG] Context 'AppDbContext' started tracking 'Customer' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2023-03-05 17:40:03.718 +04:00 [DBG] Context 'AppDbContext' started tracking 'Customer' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2023-03-05 17:40:03.720 +04:00 [DBG] Context 'AppDbContext' started tracking 'Customer' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2023-03-05 17:40:03.722 +04:00 [DBG] 'AppDbContext' disposed.
+2023-03-05 17:40:03.861 +04:00 [DBG] Entity Framework Core 7.0.2 initialized 'AppDbContext' using provider 'Microsoft.EntityFrameworkCore.InMemory:7.0.2' with options: StoreName=InMem 
+2023-03-05 17:40:03.864 +04:00 [DBG] Context 'AppDbContext' started tracking 'Customer' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2023-03-05 17:40:03.865 +04:00 [DBG] Context 'AppDbContext' started tracking 'Customer' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2023-03-05 17:40:03.866 +04:00 [DBG] Context 'AppDbContext' started tracking 'Customer' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2023-03-05 17:40:03.868 +04:00 [DBG] Context 'AppDbContext' started tracking 'Customer' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2023-03-05 17:40:03.869 +04:00 [DBG] 'AppDbContext' disposed.
+2023-03-05 17:40:04.037 +04:00 [DBG] Entity Framework Core 7.0.2 initialized 'AppDbContext' using provider 'Microsoft.EntityFrameworkCore.InMemory:7.0.2' with options: StoreName=InMem 
+2023-03-05 17:40:04.039 +04:00 [DBG] Context 'AppDbContext' started tracking 'Customer' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2023-03-05 17:40:04.041 +04:00 [DBG] Context 'AppDbContext' started tracking 'Customer' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2023-03-05 17:40:04.043 +04:00 [DBG] Context 'AppDbContext' started tracking 'Customer' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2023-03-05 17:40:04.044 +04:00 [DBG] Context 'AppDbContext' started tracking 'Customer' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2023-03-05 17:40:04.046 +04:00 [DBG] 'AppDbContext' disposed.
+2023-03-05 17:40:04.199 +04:00 [DBG] Entity Framework Core 7.0.2 initialized 'AppDbContext' using provider 'Microsoft.EntityFrameworkCore.InMemory:7.0.2' with options: StoreName=InMem 
+2023-03-05 17:40:04.202 +04:00 [DBG] Context 'AppDbContext' started tracking 'Customer' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2023-03-05 17:40:04.205 +04:00 [DBG] Context 'AppDbContext' started tracking 'Customer' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2023-03-05 17:40:04.207 +04:00 [DBG] Context 'AppDbContext' started tracking 'Customer' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2023-03-05 17:40:04.210 +04:00 [DBG] Context 'AppDbContext' started tracking 'Customer' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2023-03-05 17:40:04.211 +04:00 [DBG] 'AppDbContext' disposed.
+2023-03-05 17:40:06.014 +04:00 [DBG] Entity Framework Core 7.0.2 initialized 'AppDbContext' using provider 'Microsoft.EntityFrameworkCore.InMemory:7.0.2' with options: StoreName=InMem 
+2023-03-05 17:40:06.016 +04:00 [DBG] Context 'AppDbContext' started tracking 'Customer' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2023-03-05 17:40:06.017 +04:00 [DBG] Context 'AppDbContext' started tracking 'Customer' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2023-03-05 17:40:06.018 +04:00 [DBG] Context 'AppDbContext' started tracking 'Customer' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2023-03-05 17:40:06.019 +04:00 [DBG] Context 'AppDbContext' started tracking 'Customer' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2023-03-05 17:40:06.021 +04:00 [DBG] 'AppDbContext' disposed.
+2023-03-05 17:40:06.200 +04:00 [DBG] Entity Framework Core 7.0.2 initialized 'AppDbContext' using provider 'Microsoft.EntityFrameworkCore.InMemory:7.0.2' with options: StoreName=InMem 
+2023-03-05 17:40:06.202 +04:00 [DBG] Context 'AppDbContext' started tracking 'Customer' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2023-03-05 17:40:06.204 +04:00 [DBG] Context 'AppDbContext' started tracking 'Customer' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2023-03-05 17:40:06.207 +04:00 [DBG] Context 'AppDbContext' started tracking 'Customer' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2023-03-05 17:40:06.209 +04:00 [DBG] Context 'AppDbContext' started tracking 'Customer' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2023-03-05 17:40:06.210 +04:00 [DBG] 'AppDbContext' disposed.
+2023-03-05 17:40:06.358 +04:00 [DBG] Entity Framework Core 7.0.2 initialized 'AppDbContext' using provider 'Microsoft.EntityFrameworkCore.InMemory:7.0.2' with options: StoreName=InMem 
+2023-03-05 17:40:06.361 +04:00 [DBG] Context 'AppDbContext' started tracking 'Customer' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2023-03-05 17:40:06.362 +04:00 [DBG] Context 'AppDbContext' started tracking 'Customer' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2023-03-05 17:40:06.364 +04:00 [DBG] Context 'AppDbContext' started tracking 'Customer' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2023-03-05 17:40:06.365 +04:00 [DBG] Context 'AppDbContext' started tracking 'Customer' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2023-03-05 17:40:06.366 +04:00 [DBG] 'AppDbContext' disposed.
+2023-03-05 17:40:06.524 +04:00 [DBG] Entity Framework Core 7.0.2 initialized 'AppDbContext' using provider 'Microsoft.EntityFrameworkCore.InMemory:7.0.2' with options: StoreName=InMem 
+2023-03-05 17:40:06.526 +04:00 [DBG] Context 'AppDbContext' started tracking 'Customer' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2023-03-05 17:40:06.528 +04:00 [DBG] Context 'AppDbContext' started tracking 'Customer' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2023-03-05 17:40:06.529 +04:00 [DBG] Context 'AppDbContext' started tracking 'Customer' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2023-03-05 17:40:06.531 +04:00 [DBG] Context 'AppDbContext' started tracking 'Customer' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2023-03-05 17:40:06.532 +04:00 [DBG] 'AppDbContext' disposed.
+2023-03-05 17:40:13.189 +04:00 [INF] Worker running at: "2023-03-05T17:40:13.1892192+04:00"
+2023-03-05 17:40:23.201 +04:00 [INF] Worker running at: "2023-03-05T17:40:23.2016553+04:00"
+2023-03-05 17:40:33.207 +04:00 [INF] Worker running at: "2023-03-05T17:40:33.2078494+04:00"
+2023-03-05 17:40:43.221 +04:00 [INF] Worker running at: "2023-03-05T17:40:43.2213810+04:00"
+2023-03-05 17:40:53.229 +04:00 [INF] Worker running at: "2023-03-05T17:40:53.2292797+04:00"
+2023-03-05 17:41:03.243 +04:00 [INF] Worker running at: "2023-03-05T17:41:03.2437759+04:00"

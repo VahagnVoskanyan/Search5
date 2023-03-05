@@ -23,7 +23,12 @@ namespace Search_Service.AsyncDataServices
         {
             _configuration = configuration;
 
-            var factory = new ConnectionFactory() { Uri = new Uri(_configuration["AmqpUri"]) };
+            //var factory = new ConnectionFactory() { Uri = new Uri(_configuration["AmqpUri"]) };
+            var factory = new ConnectionFactory()
+            {
+                HostName = _configuration["RabbitMQLocalHost"],
+                Port = int.Parse(_configuration["RabbitMQLocalPort"])
+            };
             try
             {
                 _connection = factory.CreateConnection();
