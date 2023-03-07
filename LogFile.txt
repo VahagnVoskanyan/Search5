@@ -475,3 +475,109 @@ RabbitMQ.Client.Exceptions.BrokerUnreachableException: None of the specified end
 2023-03-05 17:40:43.221 +04:00 [INF] Worker running at: "2023-03-05T17:40:43.2213810+04:00"
 2023-03-05 17:40:53.229 +04:00 [INF] Worker running at: "2023-03-05T17:40:53.2292797+04:00"
 2023-03-05 17:41:03.243 +04:00 [INF] Worker running at: "2023-03-05T17:41:03.2437759+04:00"
+2023-03-07 12:11:47.900 +04:00 [DBG] Registered model binder providers, in the following order: ["Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BinderTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ServicesModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BodyModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.HeaderModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FloatingPointTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.EnumTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.DateTimeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.SimpleTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.CancellationTokenModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ByteArrayModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FormFileModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FormCollectionModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.KeyValuePairModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.DictionaryModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ArrayModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.CollectionModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ComplexObjectModelBinderProvider"]
+2023-03-07 12:11:47.933 +04:00 [INF] Starting up the service
+2023-03-07 12:11:48.063 +04:00 [INF] Worker running at: "2023-03-07T12:11:48.0612351+04:00"
+2023-03-07 12:11:48.124 +04:00 [INF] Now listening on: https://localhost:7108
+2023-03-07 12:11:48.125 +04:00 [INF] Now listening on: http://localhost:5055
+2023-03-07 12:11:48.126 +04:00 [DBG] Loaded hosting startup assembly Server_Service
+2023-03-07 12:11:58.087 +04:00 [INF] Worker running at: "2023-03-07T12:11:58.0875288+04:00"
+2023-03-07 12:12:08.102 +04:00 [INF] Worker running at: "2023-03-07T12:12:08.1027605+04:00"
+2023-03-07 12:12:18.121 +04:00 [INF] Worker running at: "2023-03-07T12:12:18.1214626+04:00"
+2023-03-07 12:12:28.141 +04:00 [INF] Worker running at: "2023-03-07T12:12:28.1412705+04:00"
+2023-03-07 12:12:34.056 +04:00 [DBG] Entity Framework Core 7.0.2 initialized 'AppDbContext' using provider 'Microsoft.EntityFrameworkCore.InMemory:7.0.2' with options: StoreName=InMem 
+2023-03-07 12:12:34.063 +04:00 [DBG] Compiling query expression: 
+'DbSet<Customer>()'
+2023-03-07 12:12:34.098 +04:00 [DBG] Generated query execution expression: 
+'queryContext => new QueryingEnumerable<Customer>(
+    queryContext, 
+    InMemoryShapedQueryCompilingExpressionVisitor.Table(
+        queryContext: queryContext, 
+        entityType: EntityType: Customer)
+        .Select(valueBuffer => new ValueBuffer(new object[]
+        { 
+            (object)ExpressionExtensions.ValueBufferTryReadValue<int>(
+                valueBuffer: valueBuffer, 
+                index: 0, 
+                property: Property: Customer.Id (int) Required PK AfterSave:Throw ValueGenerated.OnAdd), 
+            ExpressionExtensions.ValueBufferTryReadValue<string>(
+                valueBuffer: valueBuffer, 
+                index: 1, 
+                property: Property: Customer.Address (string) Required), 
+            ExpressionExtensions.ValueBufferTryReadValue<string>(
+                valueBuffer: valueBuffer, 
+                index: 2, 
+                property: Property: Customer.City (string) Required), 
+            ExpressionExtensions.ValueBufferTryReadValue<string>(
+                valueBuffer: valueBuffer, 
+                index: 3, 
+                property: Property: Customer.Country (string) Required), 
+            ExpressionExtensions.ValueBufferTryReadValue<string>(
+                valueBuffer: valueBuffer, 
+                index: 4, 
+                property: Property: Customer.Email (string) Required), 
+            ExpressionExtensions.ValueBufferTryReadValue<string>(
+                valueBuffer: valueBuffer, 
+                index: 5, 
+                property: Property: Customer.Name (string) Required), 
+            ExpressionExtensions.ValueBufferTryReadValue<string>(
+                valueBuffer: valueBuffer, 
+                index: 6, 
+                property: Property: Customer.Phone (string) Required), 
+            ExpressionExtensions.ValueBufferTryReadValue<string>(
+                valueBuffer: valueBuffer, 
+                index: 7, 
+                property: Property: Customer.PostalCode (string) Required), 
+            ExpressionExtensions.ValueBufferTryReadValue<string>(
+                valueBuffer: valueBuffer, 
+                index: 8, 
+                property: Property: Customer.Region (string) Required), 
+            ExpressionExtensions.ValueBufferTryReadValue<string>(
+                valueBuffer: valueBuffer, 
+                index: 9, 
+                property: Property: Customer.Surname (string) Required) 
+        })), 
+    Func<QueryContext, ValueBuffer, Customer>, 
+    Server_Service.Data.AppDbContext, 
+    False, 
+    True
+)'
+2023-03-07 12:12:34.111 +04:00 [DBG] Context 'AppDbContext' started tracking 'Customer' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2023-03-07 12:12:34.116 +04:00 [DBG] Context 'AppDbContext' started tracking 'Customer' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2023-03-07 12:12:34.118 +04:00 [DBG] Context 'AppDbContext' started tracking 'Customer' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2023-03-07 12:12:34.119 +04:00 [DBG] Context 'AppDbContext' started tracking 'Customer' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2023-03-07 12:12:34.120 +04:00 [DBG] 'AppDbContext' disposed.
+2023-03-07 12:12:38.170 +04:00 [INF] Worker running at: "2023-03-07T12:12:38.1706752+04:00"
+2023-03-07 19:13:24.447 +04:00 [DBG] Registered model binder providers, in the following order: ["Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BinderTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ServicesModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BodyModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.HeaderModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FloatingPointTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.EnumTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.DateTimeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.SimpleTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.CancellationTokenModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ByteArrayModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FormFileModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FormCollectionModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.KeyValuePairModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.DictionaryModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ArrayModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.CollectionModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ComplexObjectModelBinderProvider"]
+2023-03-07 19:13:24.499 +04:00 [INF] Starting up the service
+2023-03-07 19:13:24.776 +04:00 [INF] Worker running at: "2023-03-07T19:13:24.7723183+04:00"
+2023-03-07 19:13:24.971 +04:00 [INF] Now listening on: https://localhost:7108
+2023-03-07 19:13:24.972 +04:00 [INF] Now listening on: http://localhost:5055
+2023-03-07 19:13:24.973 +04:00 [DBG] Loaded hosting startup assembly Server_Service
+2023-03-07 19:13:24.974 +04:00 [DBG] Loaded hosting startup assembly Microsoft.AspNetCore.Watch.BrowserRefresh
+2023-03-07 19:13:24.975 +04:00 [DBG] Loaded hosting startup assembly Microsoft.WebTools.BrowserLink.Net
+2023-03-07 19:13:25.934 +04:00 [DBG] Connection 0HMOV3PVPTOAE established using the following protocol: "Tls13"
+2023-03-07 19:13:25.977 +04:00 [INF] Request starting HTTP/2 GET https://localhost:7108/swagger/index.html - -
+2023-03-07 19:13:26.015 +04:00 [DBG] Wildcard detected, all requests with hosts will be allowed.
+2023-03-07 19:13:26.052 +04:00 [DBG] 1 candidate(s) found for the request path '/swagger/index.html'
+2023-03-07 19:13:26.058 +04:00 [DBG] Endpoint 'gRPC - Unimplemented service' with route pattern '{unimplementedService}/{unimplementedMethod}' was rejected by constraint 'contentType':'Grpc.AspNetCore.Server.Model.Internal.ServiceRouteBuilder`1+GrpcUnimplementedConstraint[Server_Service.SyncDataServices.gRPC.GrpcCustomerService]' with value 'null' for the request path '/swagger/index.html'
+2023-03-07 19:13:26.065 +04:00 [DBG] Endpoint 'gRPC - Unimplemented service' with route pattern '{unimplementedService}/{unimplementedMethod}' is not valid for the request path '/swagger/index.html'
+2023-03-07 19:13:26.069 +04:00 [DBG] Request did not match any endpoints
+2023-03-07 19:13:26.408 +04:00 [DBG] Response markup is scheduled to include browser refresh script injection.
+2023-03-07 19:13:26.435 +04:00 [DBG] Response markup was updated to include browser refresh script injection.
+2023-03-07 19:13:26.440 +04:00 [INF] Request finished HTTP/2 GET https://localhost:7108/swagger/index.html - - - 200 - text/html;charset=utf-8 465.5742ms
+2023-03-07 19:13:26.456 +04:00 [INF] Request starting HTTP/2 GET https://localhost:7108/_framework/aspnetcore-browser-refresh.js - -
+2023-03-07 19:13:26.456 +04:00 [INF] Request starting HTTP/2 GET https://localhost:7108/_vs/browserLink - -
+2023-03-07 19:13:26.461 +04:00 [INF] Request finished HTTP/2 GET https://localhost:7108/_framework/aspnetcore-browser-refresh.js - - - 200 11998 application/javascript;+charset=utf-8 5.6940ms
+2023-03-07 19:13:26.504 +04:00 [INF] Request finished HTTP/2 GET https://localhost:7108/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 47.9120ms
+2023-03-07 19:13:26.546 +04:00 [INF] Request starting HTTP/2 GET https://localhost:7108/swagger/v1/swagger.json - -
+2023-03-07 19:13:26.549 +04:00 [DBG] No candidates found for the request path '/swagger/v1/swagger.json'
+2023-03-07 19:13:26.552 +04:00 [DBG] Request did not match any endpoints
+2023-03-07 19:13:26.663 +04:00 [INF] Request finished HTTP/2 GET https://localhost:7108/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 117.1620ms
+2023-03-07 19:13:34.798 +04:00 [INF] Worker running at: "2023-03-07T19:13:34.7980844+04:00"
+2023-03-07 19:13:35.385 +04:00 [DBG] Authentication of the HTTPS connection timed out.
+2023-03-07 19:13:35.395 +04:00 [DBG] Connection id "0HMOV3PVPTOAC" sending FIN because: "The Socket transport's send loop completed gracefully."
+2023-03-07 19:13:35.414 +04:00 [DBG] Authentication of the HTTPS connection timed out.
+2023-03-07 19:13:35.416 +04:00 [DBG] Connection id "0HMOV3PVPTOAD" sending FIN because: "The Socket transport's send loop completed gracefully."
+2023-03-07 19:13:44.804 +04:00 [INF] Worker running at: "2023-03-07T19:13:44.8047755+04:00"
+2023-03-07 19:13:54.811 +04:00 [INF] Worker running at: "2023-03-07T19:13:54.8116377+04:00"

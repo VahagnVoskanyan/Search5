@@ -9,6 +9,10 @@ docker pull vahagn22/ssearchservice
 docker build -t vahagn22/ssearchservice .
 docker run -p 9080:80 -d vahagn22/ssearchservice   //if want to see the output in terminal don't write '-d'
 
+RabbitMQ
+docker run -d --hostname my-rabbit-host --name my-rabbit -e RABBITMQ_DEFAULT_USER=user -e RABBITMQ_DEFAULT_PASS=password rabbitmq:3-management
+
+docker run -it --rm --name rabbitmq -p 5672:5672 -p 15672:15672 rabbitmq:3-management
 
 K8S
 
