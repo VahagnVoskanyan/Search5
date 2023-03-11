@@ -18,17 +18,22 @@ kubectl apply -f rabbitmq-depl.yaml
 
 K8S
 
+kubectl get namespace
+
 kubectl apply -f serverservice-depl.yaml
 
 kubectl get deployments                        //To see created one
 kubectl get pods
+kubectl get pods --namespace=ingress-nginx
 kubectl get services                           //To see node port
+kubectl get services --namespace=ingress-nginx
 
 kubectl delete service serverservice-clusterip-srv
 kubectl delete deployment serverservice-depl
 
 kubectl rollout restart deployment serverservice-depl
 
+Search_Service
 
 kubectl apply -f ssearchservice-depl.yaml
 kubectl apply -f ssearchservice-nodeport-srv.yaml
@@ -37,3 +42,5 @@ kubectl delete deployment ssearchservice-depl
 kubectl delete service ssearchservice-clusterip-srv
 
 kubectl delete service ssearchnpservice-srv
+
+kubectl apply -f ingress-srv.yaml
