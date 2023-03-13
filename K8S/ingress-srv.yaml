@@ -7,20 +7,13 @@ metadata:
     nginx.ingress.kubernetes.io/use-regex: 'true'
 spec:
   rules:
-  - host: ssearchingservice.com
+  - host: "ssearchingservice.com"
     http:
-       paths:
-       - path: /api/s/customers
-         pathType: Prefix
-         backend:
+      paths:
+      - path: "/api/s/customers"
+        pathType: Prefix
+        backend:
           service:
             name: ssearchservice-clusterip-srv
             port:
               number: 80
-          #- path: /api/customers
-            #pathType: Prefix
-            #backend:
-              #service:
-                #name: serverservice-clusterip-srv
-                #port:
-                  #number: 80
