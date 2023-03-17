@@ -24,9 +24,9 @@ kubectl apply -f serverservice-depl.yaml
 
 kubectl get deployments                        //To see created one
 kubectl get pods
-kubectl get pods --namespace=ingress-nginx
+kubectl get pods -n ingress-nginx
 kubectl get services                           //To see node port
-kubectl get services --namespace=ingress-nginx
+kubectl get services -n ingress-nginx
 
 kubectl delete deployment serverservice-depl
 kubectl delete service serverservice-clusterip-srv
@@ -44,5 +44,10 @@ kubectl delete service ssearchservice-clusterip-srv
 kubectl delete service ssearchnpservice-srv
 
 kubectl apply -f ingress-srv.yaml
+kubectl apply -f default-ingress.yaml
 
 kubectl get ingress
+kubectl delete ingress ingress-srv
+
+
+ssearchservice-clusterip-srv

@@ -1,0 +1,19 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: default-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/use-regex: 'true'
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: searchingservice.info
+      http:
+        paths:
+          - path: /api/s/customers
+            pathType: Prefix
+            backend:
+              service:
+                name: ssearchservice-clusterip-srv
+                port:
+                  number: 80

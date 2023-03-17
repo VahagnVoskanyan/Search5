@@ -3,17 +3,26 @@ kind: Ingress
 metadata:
   name: ingress-srv
   annotations:
-    kubernetes.io/ingress.class: nginx
+    #kubernetes.io/ingress.class: nginx
     nginx.ingress.kubernetes.io/use-regex: 'true'
+    nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
+  ingressClassName: nginx-example
   rules:
-  - host: "ssearchingservice.com"
+  - host: ssearchingservice.com
     http:
       paths:
-      - path: "/api/s/customers"
+      - path: /api/s/customers
         pathType: Prefix
         backend:
           service:
             name: ssearchservice-clusterip-srv
+            port:
+              number: 80
+      - path: /api/platforms
+        pathType: Prefix
+        backend:
+          service:
+            name: serverservice-clusterip-srv
             port:
               number: 80

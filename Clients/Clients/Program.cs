@@ -1,4 +1,5 @@
 ﻿using System.Diagnostics;
+using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace Clients
@@ -9,7 +10,7 @@ namespace Clients
         {
             //1 method grem vochte esqan shat??????
 
-            Task[] tasks = new Task[5];
+            //Task[] tasks = new Task[5];
             Stopwatch stopwatch = new Stopwatch();
 
             /*for (int i = 0; i < tasks.Length; i++)
@@ -19,7 +20,7 @@ namespace Clients
             }*/
             stopwatch.Start();
 
-            Console.WriteLine($"--> Task 0 starts");
+            /*Console.WriteLine($"--> Task 0 starts");
             tasks[0] = AsyncMethod();
             Console.WriteLine($"--> Task 1 starts");
             tasks[1] = AsyncMethod1();
@@ -30,13 +31,38 @@ namespace Clients
             Console.WriteLine($"--> Task 4 starts");
             tasks[4] = AsyncMethod4();
 
-            Task.WaitAll(tasks);
+            Task.WaitAll(tasks);*/
+
+            Thread[] threads = new Thread[20];
+
+            for (int i = 0; i < threads.Length; i++)
+            {
+                threads[i] = new Thread(new ParameterizedThreadStart(ThreadMethod));
+            }
+            for (int i = 0; i < threads.Length; i++)
+            {
+                threads[i].Start(i + 1);
+            }
 
             stopwatch.Stop();
+
+            Thread.Sleep(150000);
 
             Console.WriteLine("\nElapsed Time is {0} ms", stopwatch.ElapsedMilliseconds);
 
         }
+        static async void ThreadMethod(object? number)
+        {
+            HttpClient client = new HttpClient();
+            for (int i = 0; i < 10; i++)
+            {
+                Console.WriteLine($"Thread: {number} -- request {i}");
+                //var result = await client.GetStringAsync("http://localhost:32596/api/s/customers/Name/Tigran");
+                //Console.WriteLine(result);
+            }
+            Console.WriteLine("ThreadMethooo00000oooodddddd--- end.");
+        }
+
         async static Task AsyncMethod()
         {
             await Task.Run(async () =>
