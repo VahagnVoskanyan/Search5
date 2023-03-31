@@ -1,0 +1,114 @@
+2023-03-24 14:34:16.062 +04:00 [DBG] Registered model binder providers, in the following order: ["Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BinderTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ServicesModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BodyModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.HeaderModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FloatingPointTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.EnumTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.DateTimeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.SimpleTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.CancellationTokenModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ByteArrayModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FormFileModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FormCollectionModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.KeyValuePairModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.DictionaryModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ArrayModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.CollectionModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ComplexObjectModelBinderProvider"]
+2023-03-24 14:34:16.113 +04:00 [INF] Starting up the service
+2023-03-24 14:34:16.273 +04:00 [INF] Worker running at: "2023-03-24T14:34:16.2708422+04:00"
+2023-03-24 14:34:16.333 +04:00 [INF] Now listening on: https://localhost:7108
+2023-03-24 14:34:16.335 +04:00 [INF] Now listening on: http://localhost:5055
+2023-03-24 14:34:16.337 +04:00 [DBG] Loaded hosting startup assembly Server_Service
+2023-03-24 14:34:26.285 +04:00 [INF] Worker running at: "2023-03-24T14:34:26.2859003+04:00"
+2023-03-24 14:34:36.302 +04:00 [INF] Worker running at: "2023-03-24T14:34:36.3025039+04:00"
+2023-03-24 14:34:46.316 +04:00 [INF] Worker running at: "2023-03-24T14:34:46.3168153+04:00"
+2023-03-24 14:34:49.619 +04:00 [DBG] Connection 0HMPCADIK0J7I established using the following protocol: "Tls13"
+2023-03-24 14:34:49.644 +04:00 [INF] Request starting HTTP/2 POST https://localhost:7108/GrpcCuctomer/GetByName application/grpc -
+2023-03-24 14:34:49.651 +04:00 [DBG] Wildcard detected, all requests with hosts will be allowed.
+2023-03-24 14:34:49.664 +04:00 [DBG] POST requests are not supported
+2023-03-24 14:34:49.683 +04:00 [DBG] 3 candidate(s) found for the request path '/GrpcCuctomer/GetByName'
+2023-03-24 14:34:49.691 +04:00 [DBG] Endpoint 'gRPC - /GrpcCuctomer/GetByName' with route pattern '/GrpcCuctomer/GetByName' is valid for the request path '/GrpcCuctomer/GetByName'
+2023-03-24 14:34:49.698 +04:00 [DBG] Endpoint 'gRPC - Unimplemented method for GrpcCuctomer' with route pattern 'GrpcCuctomer/{unimplementedMethod}' is valid for the request path '/GrpcCuctomer/GetByName'
+2023-03-24 14:34:49.699 +04:00 [DBG] Endpoint 'gRPC - Unimplemented service' with route pattern '{unimplementedService}/{unimplementedMethod}' is valid for the request path '/GrpcCuctomer/GetByName'
+2023-03-24 14:34:49.701 +04:00 [DBG] Request matched endpoint 'gRPC - /GrpcCuctomer/GetByName'
+2023-03-24 14:34:49.702 +04:00 [INF] Executing endpoint 'gRPC - /GrpcCuctomer/GetByName'
+2023-03-24 14:34:49.710 +04:00 [DBG] Reading message.
+2023-03-24 14:34:49.728 +04:00 [DBG] Entity Framework Core 7.0.2 initialized 'AppDbContext' using provider 'Microsoft.EntityFrameworkCore.InMemory:7.0.2' with options: StoreName=InMem 
+2023-03-24 14:34:49.737 +04:00 [DBG] Compiling query expression: 
+'DbSet<Customer>()'
+2023-03-24 14:34:49.768 +04:00 [DBG] Generated query execution expression: 
+'queryContext => new QueryingEnumerable<Customer>(
+    queryContext, 
+    InMemoryShapedQueryCompilingExpressionVisitor.Table(
+        queryContext: queryContext, 
+        entityType: EntityType: Customer)
+        .Select(valueBuffer => new ValueBuffer(new object[]
+        { 
+            (object)ExpressionExtensions.ValueBufferTryReadValue<int>(
+                valueBuffer: valueBuffer, 
+                index: 0, 
+                property: Property: Customer.Id (int) Required PK AfterSave:Throw ValueGenerated.OnAdd), 
+            ExpressionExtensions.ValueBufferTryReadValue<string>(
+                valueBuffer: valueBuffer, 
+                index: 1, 
+                property: Property: Customer.Address (string) Required), 
+            ExpressionExtensions.ValueBufferTryReadValue<string>(
+                valueBuffer: valueBuffer, 
+                index: 2, 
+                property: Property: Customer.City (string) Required), 
+            ExpressionExtensions.ValueBufferTryReadValue<string>(
+                valueBuffer: valueBuffer, 
+                index: 3, 
+                property: Property: Customer.Country (string) Required), 
+            ExpressionExtensions.ValueBufferTryReadValue<string>(
+                valueBuffer: valueBuffer, 
+                index: 4, 
+                property: Property: Customer.Email (string) Required), 
+            ExpressionExtensions.ValueBufferTryReadValue<string>(
+                valueBuffer: valueBuffer, 
+                index: 5, 
+                property: Property: Customer.Name (string) Required), 
+            ExpressionExtensions.ValueBufferTryReadValue<string>(
+                valueBuffer: valueBuffer, 
+                index: 6, 
+                property: Property: Customer.Phone (string) Required), 
+            ExpressionExtensions.ValueBufferTryReadValue<string>(
+                valueBuffer: valueBuffer, 
+                index: 7, 
+                property: Property: Customer.PostalCode (string) Required), 
+            ExpressionExtensions.ValueBufferTryReadValue<string>(
+                valueBuffer: valueBuffer, 
+                index: 8, 
+                property: Property: Customer.Region (string) Required), 
+            ExpressionExtensions.ValueBufferTryReadValue<string>(
+                valueBuffer: valueBuffer, 
+                index: 9, 
+                property: Property: Customer.Surname (string) Required) 
+        })), 
+    Func<QueryContext, ValueBuffer, Customer>, 
+    Server_Service.Data.AppDbContext, 
+    False, 
+    True
+)'
+2023-03-24 14:34:49.782 +04:00 [DBG] Context 'AppDbContext' started tracking 'Customer' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2023-03-24 14:34:49.788 +04:00 [DBG] Context 'AppDbContext' started tracking 'Customer' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2023-03-24 14:34:49.793 +04:00 [DBG] Context 'AppDbContext' started tracking 'Customer' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2023-03-24 14:34:49.798 +04:00 [DBG] Context 'AppDbContext' started tracking 'Customer' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2023-03-24 14:34:49.805 +04:00 [DBG] Sending message.
+2023-03-24 14:34:49.812 +04:00 [INF] Executed endpoint 'gRPC - /GrpcCuctomer/GetByName'
+2023-03-24 14:34:49.818 +04:00 [DBG] 'AppDbContext' disposed.
+2023-03-24 14:34:49.822 +04:00 [INF] Request finished HTTP/2 POST https://localhost:7108/GrpcCuctomer/GetByName application/grpc - - 200 - application/grpc 180.0312ms
+2023-03-24 14:34:56.326 +04:00 [INF] Worker running at: "2023-03-24T14:34:56.3263042+04:00"
+2023-03-24 14:35:06.331 +04:00 [INF] Worker running at: "2023-03-24T14:35:06.3316111+04:00"
+2023-03-24 14:35:16.342 +04:00 [INF] Worker running at: "2023-03-24T14:35:16.3421427+04:00"
+2023-03-24 14:35:26.354 +04:00 [INF] Worker running at: "2023-03-24T14:35:26.3542847+04:00"
+2023-03-24 14:35:33.644 +04:00 [DBG] Connection 0HMPCADIK0J7J established using the following protocol: "Tls13"
+2023-03-24 14:35:33.646 +04:00 [INF] Request starting HTTP/2 POST https://localhost:7108/GrpcCuctomer/GetByName application/grpc -
+2023-03-24 14:35:33.649 +04:00 [DBG] POST requests are not supported
+2023-03-24 14:35:33.652 +04:00 [DBG] 3 candidate(s) found for the request path '/GrpcCuctomer/GetByName'
+2023-03-24 14:35:33.654 +04:00 [DBG] Endpoint 'gRPC - /GrpcCuctomer/GetByName' with route pattern '/GrpcCuctomer/GetByName' is valid for the request path '/GrpcCuctomer/GetByName'
+2023-03-24 14:35:33.658 +04:00 [DBG] Endpoint 'gRPC - Unimplemented method for GrpcCuctomer' with route pattern 'GrpcCuctomer/{unimplementedMethod}' is valid for the request path '/GrpcCuctomer/GetByName'
+2023-03-24 14:35:33.660 +04:00 [DBG] Endpoint 'gRPC - Unimplemented service' with route pattern '{unimplementedService}/{unimplementedMethod}' is valid for the request path '/GrpcCuctomer/GetByName'
+2023-03-24 14:35:33.661 +04:00 [DBG] Request matched endpoint 'gRPC - /GrpcCuctomer/GetByName'
+2023-03-24 14:35:33.662 +04:00 [INF] Executing endpoint 'gRPC - /GrpcCuctomer/GetByName'
+2023-03-24 14:35:33.663 +04:00 [DBG] Reading message.
+2023-03-24 14:35:33.686 +04:00 [DBG] Entity Framework Core 7.0.2 initialized 'AppDbContext' using provider 'Microsoft.EntityFrameworkCore.InMemory:7.0.2' with options: StoreName=InMem 
+2023-03-24 14:35:33.691 +04:00 [DBG] Context 'AppDbContext' started tracking 'Customer' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2023-03-24 14:35:33.694 +04:00 [DBG] Context 'AppDbContext' started tracking 'Customer' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2023-03-24 14:35:33.696 +04:00 [DBG] Context 'AppDbContext' started tracking 'Customer' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2023-03-24 14:35:33.697 +04:00 [DBG] Context 'AppDbContext' started tracking 'Customer' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2023-03-24 14:35:33.704 +04:00 [DBG] Sending message.
+2023-03-24 14:35:33.706 +04:00 [INF] Executed endpoint 'gRPC - /GrpcCuctomer/GetByName'
+2023-03-24 14:35:33.708 +04:00 [DBG] 'AppDbContext' disposed.
+2023-03-24 14:35:33.711 +04:00 [INF] Request finished HTTP/2 POST https://localhost:7108/GrpcCuctomer/GetByName application/grpc - - 200 - application/grpc 64.2995ms
+2023-03-24 14:35:36.362 +04:00 [INF] Worker running at: "2023-03-24T14:35:36.3622245+04:00"
+2023-03-24 14:35:46.368 +04:00 [INF] Worker running at: "2023-03-24T14:35:46.3684119+04:00"
+2023-03-24 14:35:52.408 +04:00 [DBG] Connection id "0HMPCADIK0J7J" received FIN.
+2023-03-24 14:35:52.408 +04:00 [DBG] Connection id "0HMPCADIK0J7I" received FIN.
+2023-03-24 14:35:52.412 +04:00 [DBG] Connection id "0HMPCADIK0J7J" sending FIN because: "The Socket transport's send loop completed gracefully."
+2023-03-24 14:35:52.413 +04:00 [DBG] Connection id "0HMPCADIK0J7I" sending FIN because: "The Socket transport's send loop completed gracefully."

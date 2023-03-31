@@ -55,19 +55,24 @@ namespace Server_Service
                 app.UseSwagger();
                 app.UseSwaggerUI();
             }
-
-            app.MapGrpcService<GrpcCustomerService>(); //
-            app.MapGet("/protos/customers.proto", async context =>
-            {
-                await context.Response.WriteAsync(File.ReadAllText("Protos/customers.proto"));
-            }); //It's not necessary, we give info abour proto file
-
+            
             app.UseHttpsRedirection();
+
+            app.UseRouting(); //    
 
             app.UseAuthorization();
 
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllers();
+                endpoints.MapGrpcService<GrpcCustomerService>(); //
 
-            app.MapControllers();
+                endpoints.MapGet("/protos/customers.proto", async context =>
+                {
+                    await context.Response.WriteAsync(File.ReadAllText("Protos/customers.proto"));
+                }); //It's not necessary, we give info about proto file
+            });
+            
 
             //Checking for service run
             try
