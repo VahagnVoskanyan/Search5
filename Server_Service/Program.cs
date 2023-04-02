@@ -28,11 +28,11 @@ namespace Server_Service
             builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies()); //For Dtos
             //builder.Services.AddSingleton<IMessageBusClient, MessageBusClient>(); //Singlton?
             builder.Services.AddSingleton<IEventProcessor, EventProcessor>(); // Singlton => for Message Bus
-            builder.Services.AddHostedService<Worker>();
+            //builder.Services.AddHostedService<Worker>();
             builder.Services.AddHostedService<MessageBusSubscriber>();                //Subscribe from bus
             //builder.WebHost.UseUrls("http://localhost:5055", "https://localhost:7108");
-            builder.Host.UseWindowsService(); // To work as Windows service
-            builder.Host.UseSerilog();
+            //builder.Host.UseWindowsService(); // To work as Windows service
+            //builder.Host.UseSerilog();
             builder.Services.AddGrpc();
 
             var app = builder.Build();
@@ -40,13 +40,13 @@ namespace Server_Service
 
             PrepDb.PrepPopulation(app); //For data example
             //Serilog for logging
-            Log.Logger = new LoggerConfiguration()
+            /*Log.Logger = new LoggerConfiguration()
                 .MinimumLevel.Debug()
                 .MinimumLevel.Override("Microsost", LogEventLevel.Warning)
                 .Enrich.FromLogContext()
                 .WriteTo.Console()
                 .WriteTo.File(@"C:\Users\vahag\Desktop\Vahagn\Practise\Search5\LogFile.txt")
-                .CreateLogger();
+                .CreateLogger();*/
 
 
             // Configure the HTTP request pipeline.
@@ -72,10 +72,10 @@ namespace Server_Service
                     await context.Response.WriteAsync(File.ReadAllText("Protos/customers.proto"));
                 }); //It's not necessary, we give info about proto file
             });
-            
 
+            app.Run();
             //Checking for service run
-            try
+            /*try
             {
                 Log.Information("Starting up the service");
                 app.Run();
@@ -89,7 +89,7 @@ namespace Server_Service
             finally
             {
                 Log.CloseAndFlush();
-            }
+            }*/
         }
     }
 }
