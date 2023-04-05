@@ -4,7 +4,7 @@ metadata:
   name: default-ingress
 spec:
   rules:
-  - host: example.com
+  - host: ssearchservice.com
     http:
       paths:
       - path: /api/s/customers
