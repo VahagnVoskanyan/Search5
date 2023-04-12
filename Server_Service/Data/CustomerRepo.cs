@@ -1,4 +1,6 @@
 ﻿using Server_Service.Models;
+using FuzzySharp.SimilarityRatio; //For similar matching
+using FuzzySharp;
 
 namespace Server_Service.Data
 {
@@ -34,6 +36,12 @@ namespace Server_Service.Data
             return _context.Customers.ToList().FindAll(x => x.Name == name);
         }
 
+        //Where similarity is above 50%
+        public IEnumerable<Customer> GetCustomerByName1(string name)
+        {
+            return _context.Customers.ToList().FindAll(x => Fuzz.Ratio(x.Name,name) > 50);
+        }
+        
         public bool SaveChanges()
         {
             return (_context.SaveChanges() >= 0);

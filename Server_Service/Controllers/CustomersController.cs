@@ -44,6 +44,19 @@ namespace Server_Service.Controllers
             return NotFound();
         }
 
+        [HttpGet("Name/{name}", Name = "Get By Name")]
+        public ActionResult<IEnumerable<CustomerReadDto>> GetByName(string name)
+        {
+            Console.WriteLine("--> Getting Customer By name...");
+
+            var cust = _repository.GetCustomerByName1(name);
+            if (cust != null)
+            {
+                return Ok(_mapper.Map<IEnumerable<CustomerReadDto>>(cust));
+            }
+            return NotFound();
+        }
+
         [HttpPost]
         public ActionResult<CustomerReadDto> Create(CustomerCreateDto customerCreateDto)
         {

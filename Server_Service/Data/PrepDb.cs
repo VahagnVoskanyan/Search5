@@ -19,8 +19,15 @@ namespace Server_Service.Data
                 context.Customers.AddRange(
                     new Customer() { Name = "Armen", Surname = "Ananyan", City = "Yerevan", Email = "AAnanyan@gmail.com" },
                     new Customer() { Name = "Armen", Surname = "Barseghyan", City = "Ijevan", Email = "ABarseghyan@gmail.com" },
-                    new Customer() { Name = "Tigran", Surname = "Hovsepyan", City = "London", Email = "THovsefyan@gmail.com" },
-                    new Customer() { Name = "Hovsep", Surname = "Mkrtchyan", City = "Milan", Email = "HMkrtchyan@gmail.com" }
+                    new Customer() { Name = "Tigran", Surname = "Hovsepyan", City = "London", Email = "THovsepyan@gmail.com" },
+                    new Customer() { Name = "Hovsep", Surname = "Mkrtchyan", City = "Milan", Email = "HMkrtchyan@gmail.com" },
+
+                    new Customer() { Name = "Arman", Surname = "Simonyan", City = "Rome", Email = "ASimonyan@gmail.com" },
+                    new Customer() { Name = "Arsen", Surname = "Hovsepyan", City = "Madrid", Email = "AHovsepyan@gmail.com" },
+                    new Customer() { Name = "Artash", Surname = "Mkrtchyan", City = "Berlin", Email = "AMkrtchyan@gmail.com" },
+                    new Customer() { Name = "Ararat", Surname = "Simonyan", City = "Vienna", Email = "ArSimonyan@gmail.com" },
+                    new Customer() { Name = "Artyom", Surname = "Tadevosyan", City = "Sofia", Email = "ATadevosyan@gmail.com" },
+                    new Customer() { Name = "A", Surname = "B", City = "C", Email = "AB@gmail.com" }
                 );
                 context.SaveChanges();
             }

@@ -39,7 +39,7 @@ namespace Search_Service.EventProcessing
             {
                 var repo = scope.ServiceProvider.GetRequiredService<ICustomerRepo>();
 
-                var custs = repo.GetCustomerByName(name);
+                var custs = repo.GetCustomerByName1(name);   //
 
                 return custs;
             }
