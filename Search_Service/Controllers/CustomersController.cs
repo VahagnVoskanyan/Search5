@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using Google.Protobuf.Collections;
 using Microsoft.AspNetCore.Mvc;
 using Search_Service.AsyncDataServices;
 using Search_Service.Data;
