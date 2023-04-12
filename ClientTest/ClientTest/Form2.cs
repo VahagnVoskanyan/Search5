@@ -50,7 +50,7 @@ namespace ClientTest
             for (int i = 0; i <= _requestQuantity; i++)
             {
                 //Thread.Sleep(100);
-                var result = await client.GetStringAsync("http://localhost:31577/api/s/customers/Name/Tigran");
+                var result = await client.GetStringAsync("http://localhost:31394/api/s/customers/gRPC/Armen");
                 //Console.WriteLine(result);
 
                 textBoxes[a].Text = i.ToString();

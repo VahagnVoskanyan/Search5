@@ -1,9 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Search_Service.AsyncDataServices;
 using Search_Service.Data;
-using Search_Service.EventProcessing;
 using Search_Service.SyncDataServices.gRPC;
-using Search_Service.SyncDataServices.Http;
 
 namespace Search_Service
 {
@@ -20,12 +18,10 @@ namespace Search_Service
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
-            builder.Services.AddHttpClient<IServerDataClient, HttpServerDataClient>();
             builder.Services.AddDbContext<AppDbContext>(opt => opt.UseInMemoryDatabase("InMemS"));
             builder.Services.AddScoped<ICustomerRepoS, CustomerRepoS>();
             builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
             builder.Services.AddSingleton<IMessageBusClient, MessageBusClient>(); //Client
-            //builder.Services.AddSingleton<IEventProcessor, EventProcessor>(); // Singlton => for Message Bus
             //builder.Services.AddHostedService<MessageBusSubscriber>();
             builder.Services.AddScoped<IGrpcDataClient, GrpcDataClient>();
 

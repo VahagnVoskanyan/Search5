@@ -5,7 +5,6 @@ using Search_Service.AsyncDataServices;
 using Search_Service.Data;
 using Search_Service.Dtos;
 using Search_Service.SyncDataServices.gRPC;
-using Search_Service.SyncDataServices.Http;
 using System.Text.Json;
 
 namespace Search_Service.Controllers
@@ -15,20 +14,17 @@ namespace Search_Service.Controllers
     [ApiController]
     public class CustomersController : Controller
     {
-        private readonly IServerDataClient _serverDataCilent;
         private readonly IMessageBusClient _messageBusClient;
         private readonly IGrpcDataClient _grpcDataClient;
         private readonly ICustomerRepoS _repository;
         private readonly IMapper _mapper;
 
         public CustomersController(
-            IServerDataClient serverDataCilent,
             IMessageBusClient messageBusClient,
             IGrpcDataClient grpcDataClient,
             ICustomerRepoS repository,
             IMapper mapper)
         {
-            _serverDataCilent = serverDataCilent;
             _messageBusClient = messageBusClient;
             _grpcDataClient = grpcDataClient;
             _repository = repository;
@@ -55,17 +51,6 @@ namespace Search_Service.Controllers
                 Console.WriteLine($"--> Couldn't send or receive asynchronously: {ex.Message}");
                 return new List<CustomerReadDto>();  //returns []
             }
-
-            /*Console.WriteLine("--> Sending Name by Http");
-            try
-            {
-                await _serverDataCilent.SendNameToServer(name);
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"--> Couldn't send synchronously: {ex.Message}");
-            }
-            return Ok();*/
         }
 
         [HttpGet("gRPC/{name}", Name = "Send Name by gRPC")]
@@ -76,7 +61,7 @@ namespace Search_Service.Controllers
             try
             {
                 var custs = _grpcDataClient.GetCustByName(name);
-                foreach (var item in custs)                         //To Save in DB
+                /*foreach (var item in custs)                         //To Save in DB
                 {
                     if (!_repository.CustomerExists(item.ExternalId))
                     {
@@ -88,7 +73,7 @@ namespace Search_Service.Controllers
                     {
                         Console.WriteLine("--> Customer already exists...");
                     }
-                }
+                }*/
                 return Ok(_mapper.Map<IEnumerable<CustomerReadDto>>(custs));
             }
             catch (Exception ex)

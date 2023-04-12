@@ -1,12 +1,8 @@
-﻿using AutoMapper;
-using RabbitMQ.Client;
+﻿using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
 using Search_Service.EventProcessing;
-using Server_Service.Data;
-using Server_Service.Dtos;
 using System.Text;
 using System.Text.Json;
-using System.Threading.Channels;
 
 namespace Server_Service.AsyncDataServices
 {
@@ -29,11 +25,12 @@ namespace Server_Service.AsyncDataServices
 
         private void InitializeRabbitMQ()
         {
-            //var factory = new ConnectionFactory() { Uri = new Uri(_configuration["AmqpUri"]) };
-            var factory = new ConnectionFactory() { HostName = _configuration["RabbitMQLocalHost"],
-                                                    Port = int.Parse(_configuration["RabbitMQLocalPort"]) };
+            var factory = new ConnectionFactory() { Uri = new Uri(_configuration["AmqpUri"]) };
+            //var factory = new ConnectionFactory() { HostName = _configuration["RabbitMQLocalHost"],
+            //                                        Port = int.Parse(_configuration["RabbitMQLocalPort"]) };
             //var factory = new ConnectionFactory() { HostName = _configuration["RabbitMQLocalHost"],
             //                                        Port = 15672 };
+
             _connection = factory.CreateConnection();
             _channel = _connection.CreateModel();
             _channel.QueueDeclare(queue: "searchqueue",
@@ -54,7 +51,7 @@ namespace Server_Service.AsyncDataServices
 
             var consumer = new EventingBasicConsumer(_channel);
             _channel.BasicConsume(queue: "searchqueue",
-                                 autoAck: false,     //'false' for waiting
+                                 autoAck: false,              //'false' for waiting
                                  consumer: consumer);
             Console.WriteLine("--> Awaiting RabbitMQ RPC requests");
 

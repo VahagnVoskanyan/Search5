@@ -1,8 +1,5 @@
-﻿using AutoMapper;
-using Microsoft.AspNetCore.Mvc;
-using RabbitMQ.Client;
+﻿using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
-using Search_Service.Dtos;
 using System.Collections.Concurrent;
 using System.Text;
 using System.Text.Json;
@@ -23,12 +20,12 @@ namespace Search_Service.AsyncDataServices
         {
             _configuration = configuration;
 
-            //var factory = new ConnectionFactory() { Uri = new Uri(_configuration["AmqpUri"]) };
-            var factory = new ConnectionFactory()
+            var factory = new ConnectionFactory() { Uri = new Uri(_configuration["AmqpUri"]) };
+            /*var factory = new ConnectionFactory()
             {
                 HostName = _configuration["RabbitMQLocalHost"],
                 Port = int.Parse(_configuration["RabbitMQLocalPort"])
-            };
+            };*/
             try
             {
                 _connection = factory.CreateConnection();
@@ -64,23 +61,8 @@ namespace Search_Service.AsyncDataServices
             }
         }
 
-        //What return in 'else' ? 2 Tasks? Why?
-        /*public void SendNameToBus(string name)
-        {
-            if (_connection.IsOpen)
-            {
-                Console.WriteLine("--> RabbitMQ Connectioin is Open, sending message...");
-                SendMessage(name);
-            }
-            else
-            {
-                Console.WriteLine("--> RabbitMQ Connectioin is Closed, Not sending");
-            }
-        }*/
-
         public Task<string> SendNameToBusAsync(string message, CancellationToken cancellationToken)
         {
-            //Not necessary?
             _channel.QueueDeclare(queue: _requestQueueName,
                      durable: false,
                      exclusive: false,
