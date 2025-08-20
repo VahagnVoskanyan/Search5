@@ -16,7 +16,7 @@ spec:
         - name: serverservice
           image: vahagn22/serverservice:latest #if the name is wrong it will be created but won't work
 ---
-apiVersion: v1 #not app/v1 as above
+apiVersion: v1 #not apps/v1 as above
 kind: Service
 metadata:
   name: serverservice-clusterip-srv

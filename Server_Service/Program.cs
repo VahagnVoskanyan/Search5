@@ -15,9 +15,24 @@ namespace Server_Service
             builder.Services.AddControllers();
             
             builder.Services.AddEndpointsApiExplorer();
+            
             builder.Services.AddSwaggerGen();
 
-            builder.Services.AddDbContext<AppDbContext>(opt => opt.UseInMemoryDatabase("InMem"));
+            if (builder.Environment.IsProduction()) // in K8S
+            {
+                Console.WriteLine("--> Using SqlServer Db");
+                builder.Services.AddDbContext<AppDbContext>(opt =>
+                    opt.UseSqlServer(builder.Configuration.GetConnectionString("CustomersConn")));
+            }
+            else
+            {
+                Console.WriteLine("--> Using InMem Db");
+                builder.Services.AddDbContext<AppDbContext>(opt =>
+                    opt.UseInMemoryDatabase("InMem"));
+            }
+            
+
+
             builder.Services.AddScoped<ICustomerRepo, CustomerRepo>();
 
             builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies()); //For Dtos
@@ -42,16 +57,14 @@ namespace Server_Service
 
             app.UseAuthorization();
 
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapControllers();
-                endpoints.MapGrpcService<GrpcCustomerService>(); //
+            app.MapControllers();
 
-                endpoints.MapGet("/protos/customers.proto", async context =>
-                {
-                    await context.Response.WriteAsync(File.ReadAllText("Protos/customers.proto"));
-                }); //It's not necessary, we give info about proto file
-            });
+            //app.MapGrpcService<GrpcCustomerService>(); //
+
+            app.MapGet("/protos/customers.proto", async context =>
+            {
+                await context.Response.WriteAsync(File.ReadAllText("Protos/customers.proto"));
+            }); //It's not not necessary, we give info about proto file
 
             app.Run();
         }

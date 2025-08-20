@@ -88,10 +88,11 @@ namespace Search_Service.Controllers
         {
             Console.WriteLine("--> Getting Customers...");
 
-            var custs = _repository.GetAllCustomers(); //this is Customer type 
+            var custs = _repository.GetAllCustomers();
 
             return Ok(_mapper.Map<IEnumerable<CustomerReadDto>>(custs));
         }
+
         [HttpGet("{id}", Name = "Get By Id")]
         public ActionResult<CustomerReadDto> GetById(int id)
         {
@@ -104,6 +105,5 @@ namespace Search_Service.Controllers
             }
             return NotFound();
         }
-
     }
 }

@@ -4,51 +4,92 @@ docker run --name server_service -p 8080:80 -d vahagn22/serverservice   //in my 
 docker ps    //will show running containers
 
 docker push vahagn22/serverservice
-
 docker pull vahagn22/serverservice
-docker pull vahagn22/ssearchservice
 
 docker build -t vahagn22/ssearchservice .
 docker run -p 9080:80 -d vahagn22/ssearchservice   //if want to see the output in terminal don't write '-d'
+
+docker push vahagn22/ssearchservice
+docker pull vahagn22/ssearchservice
 
 RabbitMQ
 docker run -d --hostname my-rabbit-host --name my-rabbit -e RABBITMQ_DEFAULT_USER=user -e RABBITMQ_DEFAULT_PASS=password rabbitmq:3-management
 
 docker run -it --rm --name rabbitmq -p 5672:5672 -p 15672:15672 rabbitmq:3-management
 
-kubectl apply -f rabbitmq-depl.yaml
 
-K8S
+
+## K8S
 
 kubectl apply -f serverservice-depl.yaml
 
 kubectl get deployments                        //To see created one
 kubectl get pods
-kubectl get pods -n ingress-nginx
 kubectl get services                           //To see node port
-kubectl get services -n ingress-nginx
+kubectl get namespace
+kubectl get ingress
 
-kubectl delete deployment serverservice-depl
-kubectl delete service serverservice-clusterip-srv
-
-kubectl rollout restart deployment serverservice-depl
-
-Search_Service
+# Search_Service
 
 kubectl apply -f ssearchservice-depl.yaml
-kubectl apply -f ssearchservice-nodeport-srv.yaml
+kubectl apply -f ssearchservice-nodeport-srv.yaml # Node Port
 
 kubectl delete deployment ssearchservice-depl
 kubectl delete service ssearchservice-clusterip-srv
 
 kubectl delete service ssearchnpservice-srv
 
+kubectl rollout restart deployment ssearchservice-depl
+
+# Server_Service
+
+kubectl apply -f serverservice-depl.yaml
+kubectl apply -f serverservice-np-srv.yaml  # Node Port
+
+kubectl delete deployment serverservice-depl
+kubectl delete service serverservice-clusterip-srv
+
+kubectl delete service servernpservice-srv
+
+kubectl rollout restart deployment serverservice-depl
+
+# NGINX
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.13.1/deploy/static/provider/cloud/deploy.yaml
+
+	# Command to make it accessible (Run in Other terminal)
+kubectl port-forward --namespace=ingress-nginx service/ingress-nginx-controller 8080:80
+
+kubectl get pods -n ingress-nginx
+kubectl get services -n ingress-nginx
+
 kubectl apply -f ingress-srv.yaml
 kubectl apply -f default-ingress.yaml
 
-kubectl get namespace
-kubectl get ingress
+kubectl describe ingress ingress-srv    # For Checking
+
 kubectl delete ingress ingress-srv
 
+# MSSQL
 
-ssearchservice-clusterip-srv
+kubectl get storageclass                       //
+pvc == persistant volume claim  
+kubectl apply -f local-pvc.yaml
+kubectl get pvc
+
+kubectl create secret generic mssql --from-literal=SA_PASSWORD="password!"
+
+kubectl apply -f mssql-plat-depl.yaml
+
+kubectl delete deployment mssql-depl
+
+# RabbitMQ
+
+kubectl apply -f rabbitmq-depl.yaml
+
+kubectl delete deployment rabbitmq-depl
+
+# EF Core
+dotnet ef migrations add Iinitialmigration
+dotnet ef migrations remove
+
+

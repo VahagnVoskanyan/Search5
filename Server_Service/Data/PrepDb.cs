@@ -1,4 +1,5 @@
-﻿using Server_Service.Models;
+﻿using Microsoft.EntityFrameworkCore;
+using Server_Service.Models;
 
 namespace Server_Service.Data
 {
@@ -8,11 +9,24 @@ namespace Server_Service.Data
         {
             using var serviceScope = app.Services.CreateScope();
             SeedData(serviceScope.ServiceProvider.GetService<AppDbContext>() 
-                ?? throw new ArgumentNullException("Can't get 'AppDbContext' for Mock data"));
+                ?? throw new ArgumentNullException("Can't get 'AppDbContext' for Mock data"), app);
         }
 
-        private static void SeedData(AppDbContext context)
+        private static void SeedData(AppDbContext context, WebApplication app)
         {
+            if (app.Environment.IsProduction())
+            {
+                Console.WriteLine("--> Attemting to apply Migrations...");
+                try
+                {
+                    context.Database.Migrate();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"--> Couldn't run migrations: {ex.Message}");
+                }
+            }
+
             if (!context.Customers.Any())
             {
                 Console.WriteLine("--> Seeding Data...");
@@ -21,7 +35,6 @@ namespace Server_Service.Data
                     new Customer() { Name = "Armen", Surname = "Barseghyan", City = "Ijevan", Email = "ABarseghyan@gmail.com" },
                     new Customer() { Name = "Tigran", Surname = "Hovsepyan", City = "London", Email = "THovsepyan@gmail.com" },
                     new Customer() { Name = "Hovsep", Surname = "Mkrtchyan", City = "Milan", Email = "HMkrtchyan@gmail.com" },
-
                     new Customer() { Name = "Arman", Surname = "Simonyan", City = "Rome", Email = "ASimonyan@gmail.com" },
                     new Customer() { Name = "Arsen", Surname = "Hovsepyan", City = "Madrid", Email = "AHovsepyan@gmail.com" },
                     new Customer() { Name = "Artash", Surname = "Mkrtchyan", City = "Berlin", Email = "AMkrtchyan@gmail.com" },

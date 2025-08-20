@@ -53,7 +53,7 @@ namespace Server_Service.Controllers
 
             var customerReadDto = _mapper.Map<CustomerReadDto>(customerModel);
 
-            return CreatedAtRoute(nameof(GetCustById), new { customerReadDto.Id }, customerReadDto);
+            return CreatedAtRoute("GetById", new { customerReadDto.Id }, customerReadDto);
         }
 
 
