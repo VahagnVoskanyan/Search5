@@ -20,6 +20,7 @@ namespace Search_Service
             builder.Services.AddScoped<ICustomerRepoS, CustomerRepoS>();
             builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
             builder.Services.AddSingleton<IMessageBusClient, MessageBusClient>(); //Client
+            builder.Services.AddSingleton<IRpcBusClient, RpcBusClient>();
             builder.Services.AddScoped<IGrpcDataClient, GrpcDataClient>();
 
 

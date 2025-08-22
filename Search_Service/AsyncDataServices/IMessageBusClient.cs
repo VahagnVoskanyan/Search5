@@ -1,7 +1,9 @@
-﻿namespace Search_Service.AsyncDataServices
+﻿using Search_Service.Dtos;
+
+namespace Search_Service.AsyncDataServices
 {
     public interface IMessageBusClient
     {
-        Task<string> SendNameToBusAsync(string name, CancellationToken cancellationToken = default);
+        void SendNewCustomer(CustomerPublishDto customerPublishDto);
     }
 }

@@ -12,10 +12,15 @@ namespace Search_Service.Profiles
             // Source -> Target
             CreateMap<CustomerPublishDto, Customer>()
                 .ForMember(dest => dest.ExternalId, opt => opt.MapFrom(src => src.Id));
+            
             CreateMap<CustomerPublishDto, CustomerReadDto>(); //??
+            
             CreateMap<Customer, CustomerReadDto>();
+
             CreateMap<GrpcCustomerModel, Customer>()
                 .ForMember(dest => dest.ExternalId, opt => opt.MapFrom(src => src.Id));
+
+            CreateMap<CustomerCreateDto, CustomerPublishDto>();
         }
     }
 }

@@ -25,9 +25,10 @@ namespace Server_Service.AsyncDataServices
 
         private void InitializeRabbitMQ()
         {
-            var factory = new ConnectionFactory() { Uri = new Uri(_configuration["AmqpUri"]) };
-            //var factory = new ConnectionFactory() { HostName = _configuration["RabbitMQLocalHost"],
-            //                                        Port = int.Parse(_configuration["RabbitMQLocalPort"]) };
+            //var factory = new ConnectionFactory() { Uri = new Uri(_configuration["AmqpUri"]) };
+            var factory = new ConnectionFactory() { HostName = _configuration["RabbitMQLocalHost"],
+                Port = int.Parse(_configuration["RabbitMQLocalPort"] ??
+                    throw new NullReferenceException("RabbitMQLocalPort is NULL")) };
             //var factory = new ConnectionFactory() { HostName = _configuration["RabbitMQLocalHost"],
             //                                        Port = 15672 };
 

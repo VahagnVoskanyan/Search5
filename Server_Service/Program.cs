@@ -36,8 +36,8 @@ namespace Server_Service
             builder.Services.AddScoped<ICustomerRepo, CustomerRepo>();
 
             builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies()); //For Dtos
-            //builder.Services.AddSingleton<IEventProcessor, EventProcessor>(); // Singleton => for Message Bus
-            //builder.Services.AddHostedService<MessageBusSubscriber>();                //Subscribe from bus
+            builder.Services.AddSingleton<IEventProcessor, EventProcessor>(); // Singleton => for Message Bus
+            builder.Services.AddHostedService<MessageBusSubscriber>();                //Subscribe from bus
             builder.Services.AddGrpc();
 
             var app = builder.Build();

@@ -1,57 +1,37 @@
 ﻿using RabbitMQ.Client;
-using RabbitMQ.Client.Events;
-using System.Collections.Concurrent;
+using Search_Service.Dtos;
 using System.Text;
+using System.Text.Json;
 
 namespace Search_Service.AsyncDataServices
 {
     public class MessageBusClient : IMessageBusClient
     {
         private readonly IConfiguration _configuration;
-        private readonly IConnection _connection;
-        private readonly IModel _channel;
-        private readonly string _requestQueueName = "searchqueue";
-        private readonly string _responseQueueName = "rpc_reply";
-        private readonly ConcurrentDictionary<string, TaskCompletionSource<string>> callbackMapper = new(); //??
+        private readonly IConnection? _connection;
+        private readonly IModel? _channel;
 
         public MessageBusClient(IConfiguration configuration)
         {
             _configuration = configuration;
 
-            var factory = new ConnectionFactory() { Uri = new Uri(_configuration["AmqpUri"]) };
-            /*var factory = new ConnectionFactory()
+            var factory = new ConnectionFactory()
             {
                 HostName = _configuration["RabbitMQLocalHost"],
-                Port = int.Parse(_configuration["RabbitMQLocalPort"])
-            };*/
+                Port = int.Parse(_configuration["RabbitMQLocalPort"] ??
+                    throw new NullReferenceException("RabbitMQLocalPort is NULL"))
+            };
+
             try
             {
                 _connection = factory.CreateConnection();
                 _channel = _connection.CreateModel();
 
+                //_channel.ExchangeDeclare(exchange: "trigger", ExchangeType.Fanout);
+
                 _connection.ConnectionShutdown += RabbitMQ_ConnnectionShutdown; //From Video
 
-                Console.WriteLine("--> Connected to Message Bus");
-
-                // declare a server-named queue (Response handling)(from tutorial)
-                _channel.QueueDeclare(_responseQueueName, true, false, false, null);
-
-                var consumer = new EventingBasicConsumer(_channel);
-
-                consumer.Received += (model, ea) =>
-                {
-                    if (!callbackMapper.TryRemove(ea.BasicProperties.CorrelationId, out var tcs))
-                        return;
-                    var body = ea.Body.ToArray();
-                    var responsemessage = Encoding.UTF8.GetString(body.ToArray());
-
-                    Console.WriteLine($"--> Received Message: {responsemessage}");
-                    tcs.TrySetResult(responsemessage);    //
-                };
-
-                _channel.BasicConsume(consumer: consumer,
-                                     queue: _responseQueueName,
-                                     autoAck: true);
+                Console.WriteLine("--> Connected to Message Bus in MessageBusClient");
             }
             catch (Exception ex)
             {
@@ -59,46 +39,43 @@ namespace Search_Service.AsyncDataServices
             }
         }
 
-        public Task<string> SendNameToBusAsync(string message, CancellationToken cancellationToken)
+        public void SendNewCustomer(CustomerPublishDto customerPublishDto)
         {
-            _channel.QueueDeclare(queue: _requestQueueName,
-                     durable: false,
-                     exclusive: false,
-                     autoDelete: false,
-                     arguments: null);
+            var message = JsonSerializer.Serialize(customerPublishDto);
 
-            IBasicProperties props = _channel.CreateBasicProperties();
-
-            var correlationId = Guid.NewGuid().ToString();
-            props.CorrelationId = correlationId;
-            props.ReplyTo = _responseQueueName;        //sending repling queue name
-
-            var messageBytes = Encoding.UTF8.GetBytes(message);
-
-            var tcs = new TaskCompletionSource<string>();
-            callbackMapper.TryAdd(correlationId, tcs);
-
-            _channel.BasicPublish(exchange: string.Empty,
-                     routingKey: "searchqueue",
-                     basicProperties: props,
-                     body: messageBytes);
-
-            Console.WriteLine($"--> We have sent: {message}");
-
-            cancellationToken.Register(() => callbackMapper.TryRemove(correlationId, out _));
-            return tcs.Task;
+            if (_connection!.IsOpen)
+            {
+                Console.WriteLine("--> RabbitMQ Connection Open, sending message...");
+                SendMessage(message);
+            }
+            else
+            {
+                Console.WriteLine("--> RabbitMQ Connection is Closed, NOT sending");
+            }
         }
 
+        private void SendMessage(string message)
+        {
+            var body = Encoding.UTF8.GetBytes(message);
+
+            _channel!.BasicPublish(exchange: "amq.direct",
+                                   routingKey: "direct",
+                                   basicProperties: null,
+                                   body: body);
+
+            Console.WriteLine($"--> We have sent: {message}");
+        }
 
         public void Dispose()  //Implement IDisposable (In tutorial)
         {
             Console.WriteLine("MessageBus Disposed");
-            if (_channel.IsOpen)
+            if (_channel!.IsOpen)
             {
                 _channel.Close(); //Also has dispose method 
-                _connection.Close();
+                _connection!.Close();
             }
         }
+
 
         private void RabbitMQ_ConnnectionShutdown(object sender, ShutdownEventArgs e)
         {
