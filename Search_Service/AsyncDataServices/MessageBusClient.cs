@@ -11,6 +11,10 @@ namespace Search_Service.AsyncDataServices
         private readonly IConnection? _connection;
         private readonly IModel? _channel;
 
+        // Using Default Direct Exchange "amq.direct"
+        private readonly string _directExchangeName = "amq.direct";
+        private readonly string _directQueueName = "directQueue";
+
         public MessageBusClient(IConfiguration configuration)
         {
             _configuration = configuration;
@@ -27,7 +31,11 @@ namespace Search_Service.AsyncDataServices
                 _connection = factory.CreateConnection();
                 _channel = _connection.CreateModel();
 
-                //_channel.ExchangeDeclare(exchange: "trigger", ExchangeType.Fanout);
+                _channel.QueueDeclare(queue: _directQueueName,
+                     durable: false,
+                     exclusive: false,
+                     autoDelete: false,
+                     arguments: null);
 
                 _connection.ConnectionShutdown += RabbitMQ_ConnnectionShutdown; //From Video
 
@@ -58,10 +66,15 @@ namespace Search_Service.AsyncDataServices
         {
             var body = Encoding.UTF8.GetBytes(message);
 
-            _channel!.BasicPublish(exchange: "amq.direct",
-                                   routingKey: "direct",
-                                   basicProperties: null,
-                                   body: body);
+            // Binding queue to exchange with routing key
+            _channel.QueueBind(queue: _directQueueName,
+                   exchange: _directExchangeName,
+                   routingKey: _directQueueName);
+
+            _channel.BasicPublish(exchange: _directExchangeName,
+                routingKey: _directQueueName,
+                basicProperties: null,
+                body: body);
 
             Console.WriteLine($"--> We have sent: {message}");
         }

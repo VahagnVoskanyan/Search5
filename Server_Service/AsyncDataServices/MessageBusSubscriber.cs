@@ -10,11 +10,13 @@ namespace Server_Service.AsyncDataServices
     {
         private readonly IConfiguration _configuration;
         private readonly IEventProcessor _eventProcessor;
-        private IConnection _connection;
-        private IModel _channel;
+        private IConnection? _connection;
+        private IModel? _channel;
 
-        public MessageBusSubscriber(
-            IConfiguration configuration,
+        private readonly string _requestQueueName = "searchQueue";
+        private readonly string _directQueueName = "directQueue";
+
+        public MessageBusSubscriber(IConfiguration configuration,
             IEventProcessor eventProcessor)
         {
             _configuration = configuration;
@@ -34,13 +36,22 @@ namespace Server_Service.AsyncDataServices
 
             _connection = factory.CreateConnection();
             _channel = _connection.CreateModel();
-            _channel.QueueDeclare(queue: "searchqueue",
+
+            // RPC Queue
+            _channel.QueueDeclare(queue: _requestQueueName,
                      durable: false,
                      exclusive: false,
                      autoDelete: false,
                      arguments: null);
 
-            //'prefetchCount'-queue won't send next message before the first one isn't 'acked' 
+            // Direct Queue
+            _channel.QueueDeclare(queue: _directQueueName,
+                     durable: false,
+                     exclusive: false,
+                     autoDelete: false,
+                     arguments: null);
+
+            //'prefetchCount'-queue won't send next message before the first one(count) isn't 'acked' 
             _channel.BasicQos(prefetchSize: 0, prefetchCount: 2, global: false);
 
             _connection.ConnectionShutdown += RabbitMQ_ConnnectionShutdown;
@@ -51,18 +62,26 @@ namespace Server_Service.AsyncDataServices
             stoppingToken.ThrowIfCancellationRequested();
 
             var consumer = new EventingBasicConsumer(_channel);
-            _channel.BasicConsume(queue: "searchqueue",
-                                 autoAck: false,              //'false' for waiting
-                                 consumer: consumer);
+
+            // RPC Queue
+            _channel.BasicConsume(queue: _requestQueueName,
+                autoAck: false,              //'false' for waiting
+                consumer: consumer);
+
+            // Direct Queue
+            _channel.BasicConsume(queue: _directQueueName,
+                autoAck: true,
+                consumer: consumer);
+
             Console.WriteLine("--> Awaiting RabbitMQ RPC requests");
 
             consumer.Received += (model, ea) =>
             {
                 var body = ea.Body.ToArray();
 
-                //For ID
-                var props = ea.BasicProperties;
-                var replyProps = _channel.CreateBasicProperties();
+                // For ID
+                var props = ea.BasicProperties; // Incoming props
+                var replyProps = _channel!.CreateBasicProperties();
                 replyProps.CorrelationId = props.CorrelationId;
                 
                 var message = Encoding.UTF8.GetString(body);
@@ -70,11 +89,11 @@ namespace Server_Service.AsyncDataServices
 
                 var response = _eventProcessor.ProcessEvent(message);      //Finding customers
 
-                //After processing the event, we 'ack' the received message 
+                // After processing the event, we 'ack' the received message 
                 _channel.BasicAck(deliveryTag: ea.DeliveryTag, multiple: false);
 
-                //Sending response message
-                var jsonmessage = JsonSerializer.Serialize(response); //
+                // Sending response message
+                var jsonmessage = JsonSerializer.Serialize(response);
                 var responseBytes = Encoding.UTF8.GetBytes(jsonmessage);
                 _channel.BasicPublish(exchange: string.Empty,
                              routingKey: props.ReplyTo,
@@ -88,13 +107,14 @@ namespace Server_Service.AsyncDataServices
         public void Dispose()
         {
             Console.WriteLine("MessageBus Disposed");
-            if (_channel.IsOpen)
+            if (_channel!.IsOpen)
             {
                 _channel.Close();
-                _connection.Close();
+                _connection!.Close();
             }
             base.Dispose();
         }
+
         private void RabbitMQ_ConnnectionShutdown(object sender, ShutdownEventArgs e)
         {
             Console.WriteLine("--> RabbitMQ Connection Shutdown");

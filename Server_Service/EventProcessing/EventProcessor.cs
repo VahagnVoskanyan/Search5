@@ -18,6 +18,7 @@ namespace Search_Service.EventProcessing
             _scopeFactory = scopeFactory;
             _mapper = mapper;
         }
+
         public IEnumerable<CustomerPublishDto> ProcessEvent(string message)
         {
             var custs = FindCustomers(message);

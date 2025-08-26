@@ -24,7 +24,7 @@ namespace Search_Service.Controllers
         [HttpGet("Name", Name = "Send Name To Bus")]
         public async Task<ActionResult<IEnumerable<CustomerReadDto>>> SendName([FromQuery] string name)
         {
-            //Send Async Message
+            //Send Async Message RPC
             try
             {
                 var response = await _rpcBusClient.SendNameToBusAsync(name);

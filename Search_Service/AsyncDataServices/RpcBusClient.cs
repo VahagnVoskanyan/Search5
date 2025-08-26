@@ -10,7 +10,8 @@ namespace Search_Service.AsyncDataServices
         private readonly IConfiguration _configuration;
         private readonly IConnection? _connection;
         private readonly IModel? _channel;
-        private readonly string _requestQueueName = "searchqueue";
+
+        private readonly string _requestQueueName = "searchQueue";
         private readonly string _responseQueueName = "rpc_reply";
         private readonly ConcurrentDictionary<string, TaskCompletionSource<string>> callbackMapper = new(); //??
 
@@ -65,6 +66,7 @@ namespace Search_Service.AsyncDataServices
         {
             _channel!.QueueDeclare(queue: _requestQueueName,
                      durable: false,
+                     // Deleted when declaring connection is closed or gone (App Shut Down) (if true)
                      exclusive: false,
                      autoDelete: false,
                      arguments: null);
@@ -80,8 +82,9 @@ namespace Search_Service.AsyncDataServices
             var tcs = new TaskCompletionSource<string>();
             callbackMapper.TryAdd(correlationId, tcs);
 
+            // Using default exchange, already binded with queue name
             _channel.BasicPublish(exchange: string.Empty,
-                     routingKey: "searchqueue",
+                     routingKey: _requestQueueName,
                      basicProperties: props,
                      body: messageBytes);
 
