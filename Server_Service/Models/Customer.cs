@@ -9,6 +9,9 @@ namespace Server_Service.Models
         public int Id { get; set; }
 
         [Required]
+        public int ExternalId { get; set; }
+
+        [Required]
         public string Name { get; set; } = null!;
 
         [Required]

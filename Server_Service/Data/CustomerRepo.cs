@@ -38,7 +38,12 @@ namespace Server_Service.Data
         {
             return _context.Customers.ToList().FindAll(x => Fuzz.Ratio(x.Name,name) > 50);
         }
-        
+
+        public bool ExternalIdExists(int externalId)
+        {
+            return _context.Customers.Any(x => x.ExternalId == externalId);
+        }
+
         public bool SaveChanges()
         {
             return (_context.SaveChanges() >= 0);

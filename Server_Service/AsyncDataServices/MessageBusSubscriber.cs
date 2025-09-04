@@ -1,6 +1,6 @@
 ﻿using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
-using Search_Service.EventProcessing;
+using Server_Service.EventProcessing;
 using System.Text;
 using System.Text.Json;
 
@@ -61,21 +61,16 @@ namespace Server_Service.AsyncDataServices
         {
             stoppingToken.ThrowIfCancellationRequested();
 
-            var consumer = new EventingBasicConsumer(_channel);
-
             // RPC Queue
+            var consumerRPC = new EventingBasicConsumer(_channel);
+
             _channel.BasicConsume(queue: _requestQueueName,
                 autoAck: false,              //'false' for waiting
-                consumer: consumer);
-
-            // Direct Queue
-            _channel.BasicConsume(queue: _directQueueName,
-                autoAck: true,
-                consumer: consumer);
+                consumer: consumerRPC);
 
             Console.WriteLine("--> Awaiting RabbitMQ RPC requests");
 
-            consumer.Received += (model, ea) =>
+            consumerRPC.Received += (model, ea) =>
             {
                 var body = ea.Body.ToArray();
 
@@ -100,6 +95,17 @@ namespace Server_Service.AsyncDataServices
                              basicProperties: replyProps,
                              body: responseBytes);
             };
+
+            // Direct Queue
+            var consumerDir = new EventingBasicConsumer(_channel);
+            
+            _channel.BasicConsume(queue: _directQueueName,
+                autoAck: true,
+                consumer: consumerDir);
+
+            Console.WriteLine("--> Awaiting RabbitMQ Direct requests");
+
+
 
             return Task.CompletedTask;
         }

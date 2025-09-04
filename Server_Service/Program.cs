@@ -2,7 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using Server_Service.AsyncDataServices;
 using Server_Service.Data;
 using Server_Service.SyncDataServices.gRPC;
-using Search_Service.EventProcessing;
+using Server_Service.EventProcessing;
 
 namespace Server_Service
 {
@@ -30,6 +30,8 @@ namespace Server_Service
                 builder.Services.AddDbContext<AppDbContext>(opt =>
                     opt.UseInMemoryDatabase("InMem"));
             }
+
+
             
 
 
@@ -40,8 +42,19 @@ namespace Server_Service
             builder.Services.AddHostedService<MessageBusSubscriber>();                //Subscribe from bus
             builder.Services.AddGrpc();
 
+
             var app = builder.Build();
 
+            try
+            {
+                using var scope = app.Services.CreateScope();
+                var db = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+                db.Database.Migrate();
+            }
+            catch (Exception ex)
+            {
+                app.Logger.LogError("Automatic Migration Error: {ex}", ex);
+            }
 
             PrepDb.PrepPopulation(app); //For Mock data
 

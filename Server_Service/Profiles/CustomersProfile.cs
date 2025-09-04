@@ -17,6 +17,9 @@ namespace Server_Service.Profiles
 
             CreateMap<CustomerReadDto,CustomerPublishDto>(); //Need?
 
+            CreateMap<CustomerPublishDto, Customer>()
+                .ForMember(dest => dest.ExternalId, opt => opt.MapFrom(src => src.Id));
+
             CreateMap<Customer, GrpcCustomerModel>();
         }
     }

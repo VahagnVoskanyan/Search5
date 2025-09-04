@@ -14,6 +14,8 @@ namespace Server_Service.Data
 
         void Create(Customer cust);
 
+        bool ExternalIdExists(int externalId);
+
         bool SaveChanges();
     }
 }

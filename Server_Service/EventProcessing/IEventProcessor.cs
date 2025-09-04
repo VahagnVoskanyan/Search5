@@ -1,6 +1,6 @@
 ﻿using Server_Service.Dtos;
 
-namespace Search_Service.EventProcessing
+namespace Server_Service.EventProcessing
 {
     public interface IEventProcessor
     {

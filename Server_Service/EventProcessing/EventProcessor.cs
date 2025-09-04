@@ -1,22 +1,22 @@
 ﻿using AutoMapper;
+using Server_Service.EventProcessing;
 using Server_Service.Data;
 using Server_Service.Dtos;
 using Server_Service.Models;
 
-namespace Search_Service.EventProcessing
+namespace Server_Service.EventProcessing
 {
     public class EventProcessor : IEventProcessor
     {
-        private readonly IServiceScopeFactory _scopeFactory;
         private readonly IMapper _mapper;
+        private readonly IServiceScopeFactory _scopeFactory;
 
         //Can't call repo in MessageBusSubscriber because the lifetime is shorter then in this singleton class
-        public EventProcessor(
-            IServiceScopeFactory scopeFactory,
-            IMapper mapper)
+        public EventProcessor(IMapper mapper,
+            IServiceScopeFactory scopeFactory)
         {
-            _scopeFactory = scopeFactory;
             _mapper = mapper;
+            _scopeFactory = scopeFactory;
         }
 
         public IEnumerable<CustomerPublishDto> ProcessEvent(string message)
@@ -24,11 +24,10 @@ namespace Search_Service.EventProcessing
             var custs = FindCustomers(message);
 
             //Send Async Message
-
             var customerPublishDto = _mapper.Map<IEnumerable<CustomerPublishDto>>(custs);
             foreach (var item in customerPublishDto)
             {
-                item.Event = "Customer_Published";
+                item.Event = EventType.Customer_Published.ToString();
             }
 
             return customerPublishDto;
@@ -45,5 +44,11 @@ namespace Search_Service.EventProcessing
                 return custs;
             }
         }
+    }
+
+    enum EventType
+    {
+        Customer_Published,
+        Undetermined
     }
 }

@@ -82,6 +82,8 @@ kubectl apply -f mssql-plat-depl.yaml
 
 kubectl delete deployment mssql-depl
 
+For SQL Migration Add Update must change program.cs to use SQL in Development!!
+
 # RabbitMQ
 
 kubectl apply -f rabbitmq-depl.yaml
@@ -89,7 +91,7 @@ kubectl apply -f rabbitmq-depl.yaml
 kubectl delete deployment rabbitmq-depl
 
 # EF Core
-dotnet ef migrations add Iinitialmigration
+dotnet ef migrations add Initialmigration
 dotnet ef migrations remove
 
 
