@@ -4,6 +4,6 @@ namespace Search_Service.AsyncDataServices
 {
     public interface IMessageBusClient
     {
-        void SendNewCustomer(CustomerPublishDto customerPublishDto);
+        void SendNewCustomer(CustomerPublishedDto customerPublishDto);
     }
 }

@@ -18,6 +18,12 @@ namespace Server_Service
             
             builder.Services.AddSwaggerGen();
 
+            // Uncomment for local testing real SQL Server
+            /*Console.WriteLine("--> Using SqlServer Db");
+            builder.Services.AddDbContext<AppDbContext>(opt =>
+                opt.UseSqlServer(builder.Configuration.GetConnectionString("CustomersConn")));*/
+
+            // Comment for local testing real SQL Server
             if (builder.Environment.IsProduction()) // in K8S
             {
                 Console.WriteLine("--> Using SqlServer Db");
@@ -30,9 +36,6 @@ namespace Server_Service
                 builder.Services.AddDbContext<AppDbContext>(opt =>
                     opt.UseInMemoryDatabase("InMem"));
             }
-
-
-            
 
 
             builder.Services.AddScoped<ICustomerRepo, CustomerRepo>();

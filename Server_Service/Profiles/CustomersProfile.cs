@@ -13,12 +13,13 @@ namespace Server_Service.Profiles
              
             CreateMap<CustomerCreateDto, Customer>();
 
-            CreateMap<Customer, CustomerPublishDto>();   //
+            CreateMap<Customer, CustomerPublishedDto>();   //
 
-            CreateMap<CustomerReadDto,CustomerPublishDto>(); //Need?
+            CreateMap<CustomerReadDto,CustomerPublishedDto>(); //Need?
 
-            CreateMap<CustomerPublishDto, Customer>()
-                .ForMember(dest => dest.ExternalId, opt => opt.MapFrom(src => src.Id));
+            CreateMap<CustomerPublishedDto, Customer>()
+                .ForMember(dest => dest.ExternalId, opt => opt.MapFrom(src => src.Id))
+                .ForMember(dest => dest.Id, opt => opt.MapFrom(src => default(int)));
 
             CreateMap<Customer, GrpcCustomerModel>();
         }

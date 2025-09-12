@@ -5,7 +5,7 @@ using Search_Service.Dtos;
 
 namespace Search_Service.Controllers
 {
-    [Route("api/s/[controller]")]
+    [Route("api/s/customers/[controller]")]
     [ApiController]
     public class MessageBusController : ControllerBase
     {
@@ -23,7 +23,9 @@ namespace Search_Service.Controllers
         [HttpPost("Create", Name = "Send new Consumer to Bus")]
         public IActionResult SendName([FromBody] CustomerCreateDto customerCreateDto)
         {
-            var customerPublishDto = _mapper.Map<CustomerPublishDto>(customerCreateDto);
+            var customerPublishDto = _mapper.Map<CustomerPublishedDto>(customerCreateDto);
+            //Mocking an Id (normally this comes from DB). Change this
+            customerPublishDto.Id = Random.Shared.Next(1000);
             customerPublishDto.Event = "Customer_Published";
 
             //Send Async Message
@@ -35,8 +37,8 @@ namespace Search_Service.Controllers
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"--> Couldn't send or receive asynchronously: {ex.Message}");
-                return StatusCode(500);
+                Console.WriteLine($"--> Couldn't send asynchronously: {ex.Message}");
+                return StatusCode(503);
             }
         }
     }

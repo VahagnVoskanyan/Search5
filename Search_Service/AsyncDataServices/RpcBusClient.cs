@@ -1,7 +1,9 @@
 ﻿using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
+using Search_Service.Dtos;
 using System.Collections.Concurrent;
 using System.Text;
+using System.Text.Json;
 
 namespace Search_Service.AsyncDataServices
 {
@@ -62,7 +64,7 @@ namespace Search_Service.AsyncDataServices
             }
         }
 
-        public Task<string> SendNameToBusAsync(string message, CancellationToken cancellationToken)
+        public Task<string> SendNameToBusAsync(string name, CancellationToken cancellationToken)
         {
             _channel!.QueueDeclare(queue: _requestQueueName,
                      durable: false,
@@ -76,6 +78,9 @@ namespace Search_Service.AsyncDataServices
             var correlationId = Guid.NewGuid().ToString();
             props.CorrelationId = correlationId;
             props.ReplyTo = _responseQueueName;        //sending repling queue name
+
+            var custSearchDto = new CustomerSearchDto { Event = "SearchByName", Name = name };
+            var message = JsonSerializer.Serialize(custSearchDto);
 
             var messageBytes = Encoding.UTF8.GetBytes(message);
 

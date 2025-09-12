@@ -6,7 +6,7 @@ using System.Text.Json;
 
 namespace Search_Service.Controllers
 {
-    [Route("api/s/[controller]")]
+    [Route("api/s/customers/[controller]")]
     [ApiController]
     public class RpcController : ControllerBase
     {
@@ -30,7 +30,7 @@ namespace Search_Service.Controllers
                 var response = await _rpcBusClient.SendNameToBusAsync(name);
 
                 //We can do this without Mapper (deserializing to CustomerReadDto)
-                var customerPublishDto = JsonSerializer.Deserialize<IEnumerable<CustomerPublishDto>>(response);
+                var customerPublishDto = JsonSerializer.Deserialize<IEnumerable<CustomerPublishedDto>>(response);
                 var customerReadDto = _mapper.Map<IEnumerable<CustomerReadDto>>(customerPublishDto);
 
                 return Ok(customerReadDto);
@@ -38,7 +38,7 @@ namespace Search_Service.Controllers
             catch (Exception ex)
             {
                 Console.WriteLine($"--> Couldn't send or receive asynchronously: {ex.Message}");
-                return StatusCode(500);
+                return StatusCode(503);
             }
         }
     }

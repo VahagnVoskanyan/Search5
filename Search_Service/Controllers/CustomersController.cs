@@ -6,7 +6,7 @@ using Search_Service.SyncDataServices.gRPC;
 
 namespace Search_Service.Controllers
 {
-    [Route("api/s/[controller]")] //If the name is the same as the previous one
+    [Route("api/s/customers")] //If the name is the same as the previous one
                                   //there will be problems with API Gateway
     [ApiController]
     public class CustomersController : ControllerBase

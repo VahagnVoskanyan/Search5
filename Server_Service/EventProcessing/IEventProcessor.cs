@@ -4,6 +4,6 @@ namespace Server_Service.EventProcessing
 {
     public interface IEventProcessor
     {
-        IEnumerable<CustomerPublishDto> ProcessEvent(string message);
+        IEnumerable<CustomerPublishedDto> ProcessEvent(string message);
     }
 }

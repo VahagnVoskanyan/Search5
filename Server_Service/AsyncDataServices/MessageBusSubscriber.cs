@@ -14,6 +14,8 @@ namespace Server_Service.AsyncDataServices
         private IModel? _channel;
 
         private readonly string _requestQueueName = "searchQueue";
+        // Using Default Direct Exchange "amq.direct"
+        private readonly string _directExchangeName = "amq.direct";
         private readonly string _directQueueName = "directQueue";
 
         public MessageBusSubscriber(IConfiguration configuration,
@@ -28,9 +30,12 @@ namespace Server_Service.AsyncDataServices
         private void InitializeRabbitMQ()
         {
             //var factory = new ConnectionFactory() { Uri = new Uri(_configuration["AmqpUri"]) };
-            var factory = new ConnectionFactory() { HostName = _configuration["RabbitMQLocalHost"],
+            var factory = new ConnectionFactory()
+            {
+                HostName = _configuration["RabbitMQLocalHost"],
                 Port = int.Parse(_configuration["RabbitMQLocalPort"] ??
-                    throw new NullReferenceException("RabbitMQLocalPort is NULL")) };
+                    throw new NullReferenceException("RabbitMQLocalPort is NULL"))
+            };
             //var factory = new ConnectionFactory() { HostName = _configuration["RabbitMQLocalHost"],
             //                                        Port = 15672 };
 
@@ -51,6 +56,11 @@ namespace Server_Service.AsyncDataServices
                      autoDelete: false,
                      arguments: null);
 
+            // Binding queue to exchange with routing key
+            _channel.QueueBind(queue: _directQueueName,
+                   exchange: _directExchangeName,
+                   routingKey: _directQueueName);
+
             //'prefetchCount'-queue won't send next message before the first one(count) isn't 'acked' 
             _channel.BasicQos(prefetchSize: 0, prefetchCount: 2, global: false);
 
@@ -64,23 +74,20 @@ namespace Server_Service.AsyncDataServices
             // RPC Queue
             var consumerRPC = new EventingBasicConsumer(_channel);
 
-            _channel.BasicConsume(queue: _requestQueueName,
-                autoAck: false,              //'false' for waiting
-                consumer: consumerRPC);
-
             Console.WriteLine("--> Awaiting RabbitMQ RPC requests");
 
             consumerRPC.Received += (model, ea) =>
             {
+                Console.WriteLine("--> Event Received from RPC Queue!");
                 var body = ea.Body.ToArray();
 
                 // For ID
                 var props = ea.BasicProperties; // Incoming props
                 var replyProps = _channel!.CreateBasicProperties();
                 replyProps.CorrelationId = props.CorrelationId;
-                
+
                 var message = Encoding.UTF8.GetString(body);
-                Console.WriteLine($"--> Received Name: {message}");
+                //Console.WriteLine($"--> Received Name: {message}");
 
                 var response = _eventProcessor.ProcessEvent(message);      //Finding customers
 
@@ -96,16 +103,27 @@ namespace Server_Service.AsyncDataServices
                              body: responseBytes);
             };
 
+            _channel.BasicConsume(queue: _requestQueueName,
+                autoAck: false,              //'false' for waiting
+                consumer: consumerRPC);
+
             // Direct Queue
             var consumerDir = new EventingBasicConsumer(_channel);
-            
-            _channel.BasicConsume(queue: _directQueueName,
-                autoAck: true,
-                consumer: consumerDir);
 
             Console.WriteLine("--> Awaiting RabbitMQ Direct requests");
 
+            consumerDir.Received += (model, ea) =>
+            {
+                Console.WriteLine("--> Event Received from Direct Queue!");
+                var body = ea.Body;
+                var notificationMessage = Encoding.UTF8.GetString(body.ToArray());
 
+                _eventProcessor.ProcessEvent(notificationMessage);
+            };
+
+            _channel.BasicConsume(queue: _directQueueName,
+                autoAck: true,
+                consumer: consumerDir);
 
             return Task.CompletedTask;
         }

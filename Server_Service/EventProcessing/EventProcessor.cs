@@ -1,8 +1,10 @@
 ﻿using AutoMapper;
-using Server_Service.EventProcessing;
+using Google.Protobuf.Collections;
 using Server_Service.Data;
 using Server_Service.Dtos;
+using Server_Service.EventProcessing;
 using Server_Service.Models;
+using System.Text.Json;
 
 namespace Server_Service.EventProcessing
 {
@@ -19,12 +21,48 @@ namespace Server_Service.EventProcessing
             _scopeFactory = scopeFactory;
         }
 
-        public IEnumerable<CustomerPublishDto> ProcessEvent(string message)
+        public IEnumerable<CustomerPublishedDto> ProcessEvent(string message)
         {
-            var custs = FindCustomers(message);
+            var eventType = DetermineEvent(message);
 
-            //Send Async Message
-            var customerPublishDto = _mapper.Map<IEnumerable<CustomerPublishDto>>(custs);
+            switch (eventType)
+            {
+                case EventType.SearchByName:
+                    var customers = FindCustomers(message);
+                    return MakeCustPublishDtos(customers);
+                case EventType.Customer_Published:
+                    CreateCustomer(message);
+                    return [];
+                default:
+                    Console.WriteLine("--> Event not recognized");
+                    return [];
+            }
+        }
+
+        private IEnumerable<Customer> FindCustomers(string message)
+        {
+            var custSearchDto = JsonSerializer.Deserialize<CustomerSearchDto>(message);
+
+            if (custSearchDto == null)
+            {
+                Console.WriteLine("--> CustomerSearchDto is NULL");
+                return [];
+            }
+
+            using (var scope = _scopeFactory.CreateScope())
+            {
+                var repo = scope.ServiceProvider.GetRequiredService<ICustomerRepo>();
+
+                var custs = repo.GetByNameSim(custSearchDto.Name);   //
+
+                return custs;
+            }
+        }
+
+        private IEnumerable<CustomerPublishedDto> MakeCustPublishDtos(IEnumerable<Customer> customers)
+        {
+            // Make Async response Message
+            var customerPublishDto = _mapper.Map<IEnumerable<CustomerPublishedDto>>(customers);
             foreach (var item in customerPublishDto)
             {
                 item.Event = EventType.Customer_Published.ToString();
@@ -33,15 +71,59 @@ namespace Server_Service.EventProcessing
             return customerPublishDto;
         }
 
-        private IEnumerable<Customer> FindCustomers(string name)
+        private void CreateCustomer(string message)
         {
+            var custPublishedDto = JsonSerializer.Deserialize<CustomerPublishedDto>(message);
+
             using (var scope = _scopeFactory.CreateScope())
             {
                 var repo = scope.ServiceProvider.GetRequiredService<ICustomerRepo>();
 
-                var custs = repo.GetByNameSim(name);   //
+                try
+                {
+                    var cust = _mapper.Map<Customer>(custPublishedDto);
 
-                return custs;
+                    if (!repo.ExternalIdExists(cust.ExternalId))
+                    {
+                        repo.Create(cust);
+                        repo.SaveChanges();
+                        Console.WriteLine($"--> Customer added! {cust.ExternalId} - {cust.Name} {cust.Surname}");
+                    }
+                    else
+                    {
+                        Console.WriteLine($"--> Customer already exists... {cust.ExternalId} - {cust.Name} {cust.Surname}");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"--> Couldn't add Customer to DB {ex.Message}");
+                }
+            }
+        }
+
+        private static EventType DetermineEvent(string notificationMessage)
+        {
+            Console.WriteLine("--> Determining Event");
+
+            var eventType = JsonSerializer.Deserialize<GenericEventDto>(notificationMessage);
+
+            if (eventType == null)
+            {
+                Console.WriteLine("No event Type");
+                return EventType.Undetermined;
+            }
+
+            switch (eventType.Event)
+            {
+                case "SearchByName":
+                    Console.WriteLine("--> SearchByName Event detected");
+                    return EventType.SearchByName;
+                case "Customer_Published":
+                    Console.WriteLine("--> Customer Published Event detected");
+                    return EventType.Customer_Published;
+                default:
+                    Console.WriteLine("--> Couldn't determine the Event Type");
+                    return EventType.Undetermined;
             }
         }
     }
@@ -49,6 +131,7 @@ namespace Server_Service.EventProcessing
     enum EventType
     {
         Customer_Published,
+        SearchByName,
         Undetermined
     }
 }

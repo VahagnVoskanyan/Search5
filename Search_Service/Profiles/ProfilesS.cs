@@ -10,17 +10,17 @@ namespace Search_Service.Profiles
         public ProfilesS()
         {
             // Source -> Target
-            CreateMap<CustomerPublishDto, Customer>()
+            CreateMap<CustomerPublishedDto, Customer>()
                 .ForMember(dest => dest.ExternalId, opt => opt.MapFrom(src => src.Id));
-            
-            CreateMap<CustomerPublishDto, CustomerReadDto>(); //??
+
+            CreateMap<CustomerPublishedDto, CustomerReadDto>();
             
             CreateMap<Customer, CustomerReadDto>();
 
             CreateMap<GrpcCustomerModel, Customer>()
                 .ForMember(dest => dest.ExternalId, opt => opt.MapFrom(src => src.Id));
 
-            CreateMap<CustomerCreateDto, CustomerPublishDto>();
+            CreateMap<CustomerCreateDto, CustomerPublishedDto>();
         }
     }
 }

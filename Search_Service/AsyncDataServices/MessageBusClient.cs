@@ -31,11 +31,11 @@ namespace Search_Service.AsyncDataServices
                 _connection = factory.CreateConnection();
                 _channel = _connection.CreateModel();
 
-                _channel.QueueDeclare(queue: _directQueueName,
+                /*_channel.QueueDeclare(queue: _directQueueName,
                      durable: false,
                      exclusive: false,
                      autoDelete: false,
-                     arguments: null);
+                     arguments: null);*/
 
                 _connection.ConnectionShutdown += RabbitMQ_ConnnectionShutdown; //From Video
 
@@ -47,7 +47,7 @@ namespace Search_Service.AsyncDataServices
             }
         }
 
-        public void SendNewCustomer(CustomerPublishDto customerPublishDto)
+        public void SendNewCustomer(CustomerPublishedDto customerPublishDto)
         {
             var message = JsonSerializer.Serialize(customerPublishDto);
 
@@ -65,11 +65,6 @@ namespace Search_Service.AsyncDataServices
         private void SendMessage(string message)
         {
             var body = Encoding.UTF8.GetBytes(message);
-
-            // Binding queue to exchange with routing key
-            _channel.QueueBind(queue: _directQueueName,
-                   exchange: _directExchangeName,
-                   routingKey: _directQueueName);
 
             _channel.BasicPublish(exchange: _directExchangeName,
                 routingKey: _directQueueName,
