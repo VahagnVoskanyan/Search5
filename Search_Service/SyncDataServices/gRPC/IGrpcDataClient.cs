@@ -4,6 +4,6 @@ namespace Search_Service.SyncDataServices.gRPC
 {
     public interface IGrpcDataClient
     {
-        IEnumerable<Customer> GetCustByName(string name);
+        IEnumerable<Customer>? GetCustByName(string name);
     }
 }

@@ -21,7 +21,8 @@ namespace Server_Service.Profiles
                 .ForMember(dest => dest.ExternalId, opt => opt.MapFrom(src => src.Id))
                 .ForMember(dest => dest.Id, opt => opt.MapFrom(src => default(int)));
 
-            CreateMap<Customer, GrpcCustomerModel>();
+            CreateMap<Customer, GrpcCustomerModel>()
+                ;//.ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.ExternalId));
         }
     }
 }

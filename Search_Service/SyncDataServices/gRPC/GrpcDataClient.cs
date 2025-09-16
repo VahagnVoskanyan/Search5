@@ -16,18 +16,22 @@ namespace Search_Service.SyncDataServices.gRPC
             _configuration = configuration;
             _mapper = mapper;
         }
-        public IEnumerable<Customer> GetCustByName(string name)
-        {
-            Console.WriteLine($"--> Calling gRPC Service: {_configuration["GrpcServerS"]}");
 
-            var channel = GrpcChannel.ForAddress(_configuration["GrpcServerS"]);
-            var client = new GrpcCuctomer.GrpcCuctomerClient(channel);
+        /// <exception cref="NullReferenceException">If URL is Null</exception>
+        public IEnumerable<Customer>? GetCustByName(string name)
+        {
+            var url = _configuration["GrpcServerS"] ?? throw new NullReferenceException("URL");
+
+            Console.WriteLine($"--> Calling gRPC Service: {url}");
+
+            var channel = GrpcChannel.ForAddress(url);
+            var client = new GrpcCustomer.GrpcCustomerClient(channel);
             var request = new SearchRequest { Name = name };
 
             try
             {
                 var reply = client.GetByName(request);
-                return _mapper.Map<IEnumerable<Customer>>(reply.Cusotmer); //reply.Customer ??
+                return _mapper.Map<IEnumerable<Customer>>(reply.Cusotmers);
             }
             catch (Exception ex)
             {

@@ -17,10 +17,10 @@ namespace Search_Service.Profiles
             
             CreateMap<Customer, CustomerReadDto>();
 
-            CreateMap<GrpcCustomerModel, Customer>()
-                .ForMember(dest => dest.ExternalId, opt => opt.MapFrom(src => src.Id));
-
             CreateMap<CustomerCreateDto, CustomerPublishedDto>();
+
+            CreateMap<GrpcCustomerModel, Customer>()
+                ;//.ForMember(dest => dest.ExternalId, opt => opt.MapFrom(src => src.Id));
         }
     }
 }

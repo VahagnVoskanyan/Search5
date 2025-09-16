@@ -4,7 +4,7 @@ using Server_Service.Data;
 
 namespace Server_Service.SyncDataServices.gRPC
 {
-    public class GrpcCustomerService : GrpcCuctomer.GrpcCuctomerBase
+    public class GrpcCustomerService : GrpcCustomer.GrpcCustomerBase
     {
         private readonly ICustomerRepo _repository;
         private readonly IMapper _mapper;
@@ -23,7 +23,7 @@ namespace Server_Service.SyncDataServices.gRPC
 
             foreach (var cust in customers)
             {
-                response.Cusotmer.Add(_mapper.Map<GrpcCustomerModel>(cust));
+                response.Cusotmers.Add(_mapper.Map<GrpcCustomerModel>(cust));
             }
 
             return Task.FromResult(response);

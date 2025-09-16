@@ -43,12 +43,12 @@ namespace Server_Service
             builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies()); //For Dtos
             builder.Services.AddSingleton<IEventProcessor, EventProcessor>(); // Singleton => for Message Bus
             builder.Services.AddHostedService<MessageBusSubscriber>();                //Subscribe from bus
-            builder.Services.AddGrpc();
+            builder.Services.AddGrpc(); // gRPC
 
 
             var app = builder.Build();
 
-            try
+            /*try
             {
                 using var scope = app.Services.CreateScope();
                 var db = scope.ServiceProvider.GetRequiredService<AppDbContext>();
@@ -57,7 +57,7 @@ namespace Server_Service
             catch (Exception ex)
             {
                 app.Logger.LogError("Automatic Migration Error: {ex}", ex);
-            }
+            }*/
 
             PrepDb.PrepPopulation(app); //For Mock data
 
@@ -75,7 +75,7 @@ namespace Server_Service
 
             app.MapControllers();
 
-            //app.MapGrpcService<GrpcCustomerService>(); //
+            app.MapGrpcService<GrpcCustomerService>(); // gRPC
 
             app.MapGet("/protos/customers.proto", async context =>
             {

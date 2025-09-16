@@ -27,5 +27,5 @@ spec:
   ports:
   - name: ssearchservice
     protocol: TCP
-    port: 90
+    port: 80
     targetPort: 80

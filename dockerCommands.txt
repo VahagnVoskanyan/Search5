@@ -3,14 +3,14 @@ docker run --name server_service -p 8080:80 -d vahagn22/serverservice   //in my 
 
 docker ps    //will show running containers
 
-docker push vahagn22/serverservice
-docker pull vahagn22/serverservice
+docker push vahagn22/serverservice:latest
+docker pull vahagn22/serverservice:latest
 
 docker build -t vahagn22/ssearchservice .
 docker run -p 9080:80 -d vahagn22/ssearchservice   //if want to see the output in terminal don't write '-d'
 
-docker push vahagn22/ssearchservice
-docker pull vahagn22/ssearchservice
+docker push vahagn22/ssearchservice:latest
+docker pull vahagn22/ssearchservice:latest
 
 RabbitMQ
 docker run -d --hostname my-rabbit-host --name my-rabbit -e RABBITMQ_DEFAULT_USER=user -e RABBITMQ_DEFAULT_PASS=password rabbitmq:3-management

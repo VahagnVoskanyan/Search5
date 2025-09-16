@@ -6,7 +6,7 @@ using Search_Service.SyncDataServices.gRPC;
 
 namespace Search_Service.Controllers
 {
-    [Route("api/s/customers")] //If the name is the same as the previous one
+    [Route("api/s/[controller]")] //If the name is the same as the previous one
                                   //there will be problems with API Gateway
     [ApiController]
     public class CustomersController : ControllerBase
@@ -33,6 +33,9 @@ namespace Search_Service.Controllers
             try
             {
                 var custs = _grpcDataClient.GetCustByName(name);
+
+                if (custs == null) return StatusCode(503);
+
                 /*foreach (var item in custs)                         //To Save in DB
                 {
                     if (!_repository.CustomerExists(item.ExternalId))
