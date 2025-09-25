@@ -32,11 +32,11 @@ namespace Search_Service.Controllers
 
             try
             {
-                var custs = _grpcDataClient.GetCustByName(name);
+                var customers = _grpcDataClient.GetCustByName(name);
 
-                if (custs == null) return StatusCode(503);
+                if (customers == null) return StatusCode(503);
 
-                /*foreach (var item in custs)                         //To Save in DB
+                foreach (var item in customers)                         //To Save in DB
                 {
                     if (!_repository.CustomerExists(item.ExternalId))
                     {
@@ -48,13 +48,13 @@ namespace Search_Service.Controllers
                     {
                         Console.WriteLine("--> Customer already exists...");
                     }
-                }*/
-                return Ok(_mapper.Map<IEnumerable<CustomerReadDto>>(custs));
+                }
+                return Ok(_mapper.Map<IEnumerable<CustomerReadDto>>(customers));
             }
             catch (Exception ex)
             {
                 Console.WriteLine($"--> Couldn't send synchronously: {ex.Message}");
-                return BadRequest(ex.Message); //
+                return StatusCode(500);
             }
         }
 

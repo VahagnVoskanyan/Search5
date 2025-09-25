@@ -28,10 +28,6 @@ namespace Search_Service.Data
 
         public void CreateCustomer(Customer cust)
         {
-            if (cust == null)
-            {
-                throw new ArgumentNullException(nameof(cust));
-            }
             _context.Customers.Add(cust);
         }
 
